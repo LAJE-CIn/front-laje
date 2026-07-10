@@ -2,7 +2,6 @@
 
 import type { Request, Response } from 'express';
 import type { Jogo } from '../interfaces/Jogo.interface.js';
-import type { Evento } from '../interfaces/Evento.interface.js';
 import query from '../db/query.js';
 
 // Controladores
@@ -13,7 +12,7 @@ async function getJogo(req: Request, res: Response): Promise<Response> {
 
   const { id } = req.params;
 
-  const jogo = await query.getJogoById(Number(id));
+  const jogo: Jogo = await query.getJogoById(Number(id));
 
   return res.status(200).json({
     success: true,

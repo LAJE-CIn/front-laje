@@ -33,7 +33,32 @@ async function getJogos(limit: number, offset: number): Promise<Jogo[]> {
 
 // Evento
 
+async function getEventoById(id: number): Promise<Evento | null> {
+  const evento = await Eventos.findByPk(id, {
+    include: [
+      {
+        model: Jogos,
+        attributes: ['id', 'nome'],
+        through: { attributes: [] }
+      }
+    ]
+  });
+
+  return evento ? (evento.toJSON() as Evento) : null;
+}
+
+async function getEventos(limit: number, offset: number): Promise<Evento[]> {
+  const eventos = await Eventos.findAll({
+    limit: limit,
+    offset: offset
+  });
+
+  return eventos.map((evento) => evento.toJSON() as Evento);
+}
+
 export default {
   getJogoById,
-  getJogos
+  getJogos,
+  getEventoById,
+  getEventos
 };

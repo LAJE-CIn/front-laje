@@ -2,6 +2,8 @@
 
 import express from 'express';
 import cors from 'cors';
+import jogoRoutes from './controllers/jogoController.js';
+import eventoRoutes from './controllers/eventoController.js';
 
 // Configuração
 
@@ -14,4 +16,6 @@ app.use(cors());
 
 // Rotas
 
+app.use('/', jogoRoutes);
+app.use('/', eventoRoutes);
 export default app;
