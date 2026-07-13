@@ -24,13 +24,11 @@ const Eventos = pool.define(
     },
     periodoInicio: {
       type: Sequelize.DATE,
-      allowNull: false,
-      field: 'periodo_inicio'
+      allowNull: false
     },
     periodoFim: {
       type: Sequelize.DATE,
-      allowNull: false,
-      field: 'periodo_fim'
+      allowNull: false
     }
   },
   {

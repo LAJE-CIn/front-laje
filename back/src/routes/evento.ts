@@ -1,14 +1,22 @@
 // Importações
+
 import express from 'express';
 import eventoController from '../controllers/eventoController.js';
+import auth from '../middlewares/auth.js';
 
 // Configuração
 
 const router = express.Router();
 
-// Rotas
+// Rotas públicas
 
-router.get('api/evento/:id', eventoController.getEvento);
-router.get('api/eventos', eventoController.getEventos);
+router.get('/:id', eventoController.getEvento);
+router.get('/', eventoController.getEventos);
+
+// Rotas privadas
+
+router.post('/', auth, eventoController.createEvento);
+router.put('/:id', auth, eventoController.putEvento);
+router.delete('/:id', auth, eventoController.deleteEvento);
 
 export default router;
