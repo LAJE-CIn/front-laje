@@ -1,8 +1,12 @@
 // Importações
 
 import { Jogos, Eventos } from '../models/index.js';
-import type { Jogo } from '../interfaces/Jogo.interface.js';
-import type { Evento } from '../interfaces/Evento.interface.js';
+import type { Jogo, CreateJogo, UpdateJogo } from '../schemas/jogo.schema.js';
+import type {
+  Evento,
+  CreateEvento,
+  UpdateEvento
+} from '../schemas/evento.schema.js';
 
 // Querys
 
@@ -32,18 +36,13 @@ async function getJogos(limit: number, offset: number): Promise<Jogo[]> {
 }
 
 // Criação
-async function createJogo(
-  jogoData: Omit<Jogo, 'id' | 'eventos'>
-): Promise<Jogo> {
+async function createJogo(jogoData: CreateJogo): Promise<Jogo> {
   const novojogo = await Jogos.create(jogoData);
   return novojogo.toJSON() as Jogo;
 }
 
 // Atualização
-async function putJogo(
-  id: number,
-  jogoData: Omit<Jogo, 'id' | 'eventos'>
-): Promise<boolean> {
+async function putJogo(id: number, jogoData: UpdateJogo): Promise<boolean> {
   const [linhasafetadas] = await Jogos.update(jogoData, { where: { id: id } });
   return linhasafetadas > 0;
 }
@@ -81,9 +80,7 @@ async function getEventos(limit: number, offset: number): Promise<Evento[]> {
 
 // Criação
 
-async function createEvento(
-  eventoData: Omit<Evento, 'id' | 'lista'>
-): Promise<Evento> {
+async function createEvento(eventoData: CreateEvento): Promise<Evento> {
   const novoEvento = await Eventos.create(eventoData);
   return novoEvento.toJSON() as Evento;
 }
@@ -92,7 +89,7 @@ async function createEvento(
 
 async function putEvento(
   id: number,
-  eventoData: Omit<Evento, 'id' | 'lista'>
+  eventoData: UpdateEvento
 ): Promise<boolean> {
   const [linhasafetadas] = await Eventos.update(eventoData, {
     where: { id: id }
@@ -103,7 +100,7 @@ async function putEvento(
 
 // Deletar
 
-async function deleteEvento(id: number) {
+async function deleteEvento(id: number): Promise<boolean> {
   const deletou = await Eventos.destroy({ where: { id: id } });
   return deletou > 0;
 }

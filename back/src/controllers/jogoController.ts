@@ -1,7 +1,7 @@
 // Importações
 
 import type { Request, Response } from 'express';
-import type { Jogo } from '../interfaces/Jogo.interface.js';
+import type { Jogo, CreateJogo, UpdateJogo } from '../schemas/jogo.schema.js';
 import query from '../db/query.js';
 import { AppError } from '../utils/AppError.js';
 
@@ -12,10 +12,6 @@ async function getJogo(req: Request, res: Response): Promise<Response> {
   // {id: number}
 
   const { id } = req.params;
-
-  if (isNaN(Number(id))) {
-    throw new AppError('ID deve ser um número!', 400);
-  }
 
   const jogo: Jogo | null = await query.getJogoById(Number(id));
 
@@ -42,13 +38,13 @@ async function getJogos(req: Request, res: Response): Promise<Response> {
   });
 }
 
-// Controladore POST
+// Controladores POST
 
 async function createJogo(req: Request, res: Response): Promise<Response> {
   // Body
   // {nome: string, participantes: string[], gênero: string, descrição: string, link: string}
 
-  const jogoData: Omit<Jogo, 'id' | 'eventos'> = req.body;
+  const jogoData: CreateJogo = req.body;
 
   const jogo: Jogo = await query.createJogo(jogoData);
 
@@ -68,11 +64,7 @@ async function putJogo(req: Request, res: Response): Promise<Response> {
 
   const id = Number(req.params.id);
 
-  if (isNaN(id)) {
-    throw new AppError('ID inválido.', 400);
-  }
-
-  const jogoData = req.body;
+  const jogoData: UpdateJogo = req.body;
 
   const afetou = await query.putJogo(id, jogoData);
 
@@ -87,9 +79,6 @@ async function putJogo(req: Request, res: Response): Promise<Response> {
 
 // Controlador DELETE
 async function deleteJogo(req: Request, res: Response): Promise<Response> {
-  // Params
-  // {id: int}
-
   const id = Number(req.params.id);
 
   if (isNaN(id)) {

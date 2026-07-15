@@ -1,7 +1,11 @@
 // Importações
 
 import type { Request, Response } from 'express';
-import type { Evento } from '../interfaces/Evento.interface.js';
+import type {
+  Evento,
+  CreateEvento,
+  UpdateEvento
+} from '../schemas/evento.schema.js';
 import query from '../db/query.js';
 import { AppError } from '../utils/AppError.js';
 
@@ -12,10 +16,6 @@ async function getEvento(req: Request, res: Response): Promise<Response> {
   // {id: number}
 
   const { id } = req.params;
-
-  if (isNaN(Number(id))) {
-    throw new AppError('ID deve ser um número!', 400);
-  }
 
   const evento: Evento | null = await query.getEventoById(Number(id));
 
@@ -46,13 +46,13 @@ async function getEventos(req: Request, res: Response): Promise<Response> {
   });
 }
 
-// Controladore POST
+// Controladores POST
 
 async function createEvento(req: Request, res: Response): Promise<Response> {
   // Body
   // {nome: string, tipo: string, descrição: string, periodo: { inicio: Date, fim: Date }}
 
-  const eventoData: Omit<Evento, 'id' | 'lista'> = req.body;
+  const eventoData: CreateEvento = req.body;
 
   const evento: Evento = await query.createEvento(eventoData);
 
@@ -72,11 +72,7 @@ async function putEvento(req: Request, res: Response): Promise<Response> {
 
   const id = Number(req.params.id);
 
-  if (isNaN(id)) {
-    throw new AppError('ID inválido.', 400);
-  }
-
-  const eventoData = req.body;
+  const eventoData: UpdateEvento = req.body;
 
   const afetou = await query.putEvento(id, eventoData);
 
@@ -95,10 +91,6 @@ async function deleteEvento(req: Request, res: Response): Promise<Response> {
   // {id: int}
 
   const id = Number(req.params.id);
-
-  if (isNaN(id)) {
-    throw new AppError('ID inválido.', 400);
-  }
 
   const afetou = await query.deleteEvento(id);
 
