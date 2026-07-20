@@ -30,7 +30,7 @@ export default function ContentContainer({
   const loaded = conteudo.slice(0, current);
 
   return (
-    <div className="flex flex-col justify-center border-2 border-black bg-white/50 rounded-xs p-6 gap-6 m-4">
+    <div className="flex flex-col justify-center border-2 border-black bg-white/50 rounded-xs p-6 gap-6 shadow-2xl">
       <h1 className="text-3xl font-bold text-black tracking-wide">{titulo}</h1>
 
       <div className="grid grid-cols-5 justify-center items-center gap-7">

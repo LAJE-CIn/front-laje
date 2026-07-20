@@ -4,7 +4,8 @@ interface Posts {
   slug: string;
   nome: string;
   cover: string;
-  dataPublicacao?: string;
+  tipo: string;
+  dataPublicacao: string;
   content?: string;
 }
 
