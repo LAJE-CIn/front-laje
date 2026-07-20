@@ -2,7 +2,9 @@
 
 interface Posts {
   slug: string;
-  data: any; // placeholder
+  nome: string;
+  cover: string;
+  dataPublicacao?: string;
   content?: string;
 }
 
