@@ -41,11 +41,11 @@ export default function Header({ selected }: HeaderProps) {
       {/* Parte da Imagem */}
 
       <div className="shrink-0 flex flex-col items-center">
-        <div className="w-71 h-50 [clip-path:polygon(0_0,100%_0,50%_100%)] bg-linear-to-b from-gray-900 via-gray-600/50 to-transparent flex justify-center pt-4">
+        <div className="w-40 h-30 [clip-path:polygon(0_0,100%_0,50%_100%)] bg-linear-to-b from-gray-900 via-gray-600/50 to-transparent flex justify-center pt-4">
           <Image
             src={Laje}
             alt="Logo da Laje"
-            className="max-w-40 h-25 object-contain"
+            className="max-w-20 h-15 object-contain"
           />
         </div>
       </div>
