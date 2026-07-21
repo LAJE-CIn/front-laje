@@ -1,4 +1,5 @@
 import PaginaFeed from '@/components/pages/PáginaFeed';
+import Header from '@/components/shared/Header';
 
 export default function EventoPage() {
   const content = [
@@ -117,11 +118,14 @@ export default function EventoPage() {
   ];
 
   return (
-    <PaginaFeed
-      nome="Eventos"
-      posts={content}
-      categorias={categorias}
-      basePath="/repositorio/eventos"
-    />
+    <>
+      <Header selected="repositorio" />
+      <PaginaFeed
+        nome="Eventos"
+        posts={content}
+        categorias={categorias}
+        basePath="/repositorio/eventos"
+      />
+    </>
   );
 }
