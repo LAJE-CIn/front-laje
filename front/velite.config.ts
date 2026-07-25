@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { defineConfig, s } from 'velite'
 import fs from 'fs'
 
@@ -19,10 +20,10 @@ export default defineConfig({
         .object({
 					slug: s.string(),
           nome: s.string().max(99),
-					imagem: s.path(),
+					imagem: s.string(),
           dataPublicacao: s.isodate(),
           tipo: s.enum(['GameJams', 'Jogos de IP', 'Outros']),
-					body: s.mdx().optional(),
+					body: s.mdx(),
         }),
     },
 		jogos: {
@@ -32,11 +33,13 @@ export default defineConfig({
         .object({
 					slug: s.string(),
           nome: s.string().trim().max(99),
-					imagem: s.path(),
+					imagem: s.string(),
           dataPublicacao: s.isodate(),
 					eventos: s.array(s.string()).default([]),
           tipo: s.string().trim().toLowerCase(), 
-					body: s.mdx().optional(),
+					body: s.mdx(),
+          engine: s.string().trim().toLowerCase().optional(),
+          authors: s.array(s.string().trim()).default([]),
         }),
     }
   },
@@ -44,27 +47,10 @@ export default defineConfig({
 		// Indice de eventos:
 		// Para que o frontend não precise carregar TUDO na memória
 		// Só o necessário para fazer uma busca ou exibir.
-    const indiceEventos = collections.eventos.map((p) => ({
-			slug: p.slug,
-      nome: p.nome,
-			dataPublicacao: p.dataPublicacao,
-			// a imagem não é necessária pra busca 
-			// mas precisa estar junto pra visualização da busca
-			imagem: p.imagem, 
-			tipo: p.tipo 
-    }))
-    // Desativado por agora, vamos precisar quando for implementar a busca.
-    // fs.writeFileSync('public/indice-eventos.json', JSON.stringify(indiceEventos))
+    const indiceEventos = collections.eventos.map(({body:_, ...p}) => (p))
+    fs.writeFileSync('public/indice-eventos.json', JSON.stringify(indiceEventos))
     
-		const indiceJogos = collections.jogos.map((p) => ({
-      slug: p.slug,
-			eventos: p.eventos,
-      nome: p.nome,
-			dataPublicacao: p.dataPublicacao,
-			imagem: p.imagem, 
-			tipo: p.tipo 
-    }))
-    // Desativado por agora, vamos precisar quando for implementar a busca.
-    // fs.writeFileSync('public/indice-jogos.json', JSON.stringify(indiceJogos))
+		const indiceJogos = collections.jogos.map(({body:_, ...p}) => (p))
+    fs.writeFileSync('public/indice-jogos.json', JSON.stringify(indiceJogos))
   }
 })
