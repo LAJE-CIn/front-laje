@@ -63,8 +63,10 @@ export default function PaginaFeed({
     <div className="flex flex-col gap-5 m-4">
       {/* Barra de filtro e botão de voltar */}
 
-      <h1 className="text-5xl font-bold text-black tracking-wide">{nome}</h1>
-      <div className="flex justify-between">
+      <h1 className="text-3xl md:text-5xl font-bold text-black tracking-wide">
+        {nome}
+      </h1>
+      <div className="flex flex-col gap-2 md:flex-row md:justify-between md:items-center">
         <FilterBox
           texto={pesquisa}
           recente={recente}

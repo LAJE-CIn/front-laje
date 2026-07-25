@@ -8,10 +8,10 @@ export default function RepositorioPage() {
     path: '/repositorio/jogos'
   };
 
-  const botãoEventos = {
-    texto: 'Eventos',
+  const botãoColecoes = {
+    texto: 'Coleções',
     cor: 'bg-[#F7FF88]',
-    path: '/repositorio/eventos'
+    path: '/repositorio/colecoes'
   };
 
   return (
@@ -27,9 +27,9 @@ export default function RepositorioPage() {
       {/* Botão Evento */}
 
       <BotãoOpção
-        texto={botãoEventos.texto}
-        cor={botãoEventos.cor}
-        path={botãoEventos.path}
+        texto={botãoColecoes.texto}
+        cor={botãoColecoes.cor}
+        path={botãoColecoes.path}
       />
     </div>
   );

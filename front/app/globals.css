@@ -3,6 +3,9 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --swiper-navigation-color: black;
+  --swiper-navigation-size: 64px;
+  --swiper-pagination-color: #000;
 }
 
 @theme inline {
@@ -20,11 +23,34 @@
 }
 
 body {
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   background-size: 30px 30px; /* Size of each grid cell */
   background-image:
     linear-gradient(to right, rgba(0, 0, 0, 0.1) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
   color: var(--foreground);
   font-family: 'Pixelify Sans', Arial, Helvetica, sans-serif;
+}
+
+.swiper-pagination {
+  position: relative !important;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  transition: all 150ms ease-in-out;
+  padding: 8px;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  display: none !important;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover,
+.swiper-button-prev:active,
+.swiper-button-next:active {
+  background: rgba(150, 149, 149, 0.7);
+  border-radius: 50%;
 }
