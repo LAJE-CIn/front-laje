@@ -30,8 +30,16 @@ export default function PaginaFeed({
 
   if (pesquisa) {
     postsFiltrados = postsFiltrados.filter((post) => {
-      return post.nome.toLowerCase().includes(pesquisa.toLowerCase());
-    });
+      if (post.nome.toLowerCase().includes(pesquisa)) return true;
+      if (post.tipo.toLowerCase().includes(pesquisa)) return true;
+
+      if ("engine" in post){
+        if (post.engine?.toLowerCase().includes(pesquisa)) return true;
+        if (post.authors?.some((author) => author.toLowerCase().includes(pesquisa))) return true;
+      }
+
+      return false;
+    })
   }
 
   postsFiltrados.sort((a, b) => {
@@ -46,7 +54,7 @@ export default function PaginaFeed({
   };
 
   const mudarPesquisa = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPesquisa(e.target.value);
+    setPesquisa(e.target.value.toLowerCase());
   };
 
   const containerPorCategoria = Object.groupBy(
