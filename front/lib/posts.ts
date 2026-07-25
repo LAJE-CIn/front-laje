@@ -3,7 +3,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import Posts from '@/schemas/posts.interface';
+import Posts from '@/lib/schemas/posts.interface';
 
 // Configuração
 

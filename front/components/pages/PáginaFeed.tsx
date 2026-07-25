@@ -2,7 +2,7 @@
 
 // Importações
 
-import Posts from '@/schemas/posts.interface';
+import Posts from '@/lib/schemas/posts.interface';
 import ContentContainer from '../shared/ContentContainer';
 import FilterBox from '../shared/FilterBox';
 import BotãoVoltar from '../ui/BotãoVoltar';

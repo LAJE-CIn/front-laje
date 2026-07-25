@@ -4,7 +4,7 @@
 
 import { useState } from 'react';
 import ContentCard from '../ui/ContentCard';
-import Posts from '@/schemas/posts.interface';
+import Posts from '@/lib/schemas/posts.interface';
 import CarregarMaisCard from '../ui/CarregarMaisCard';
 
 // Container de conteúdos
