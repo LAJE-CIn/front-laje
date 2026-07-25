@@ -1,8 +1,7 @@
 'use client';
 
+import { Conteudo } from '@/lib/content';
 // Importações
-
-import Posts from '@/lib/schemas/posts.interface';
 import ContentContainer from '../shared/ContentContainer';
 import FilterBox from '../shared/FilterBox';
 import BotãoVoltar from '../ui/BotãoVoltar';
@@ -12,7 +11,7 @@ import { useState } from 'react';
 
 interface PaginaFeedProps {
   nome: string;
-  posts: Posts[];
+  posts: Conteudo[];
   categorias: string[];
   basePath: string;
 }

@@ -4,14 +4,14 @@
 
 import { useState } from 'react';
 import ContentCard from '../ui/ContentCard';
-import Posts from '@/lib/schemas/posts.interface';
 import CarregarMaisCard from '../ui/CarregarMaisCard';
+import { Conteudo } from '@/lib/content';
 
 // Container de conteúdos
 
 interface ContentContainerProps {
   titulo: string;
-  conteudo: Posts[];
+  conteudo: Conteudo[];
   basePath: string;
 }
 
@@ -38,7 +38,7 @@ export default function ContentContainer({
           <ContentCard
             key={element.slug}
             slug={element.slug}
-            cover={element.cover}
+            cover={element.imagem}
             nome={element.nome}
             basePath={basePath}
           />
