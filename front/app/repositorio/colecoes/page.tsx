@@ -14,10 +14,10 @@ export default async function EventosPage() {
     <>
       <Header selected="repositorio" />
       <PaginaFeed
-        nome="Eventos"
+        nome="Coleções"
         posts={content}
         categorias={categorias}
-        basePath="/repositorio/eventos"
+        basePath="/repositorio/colecoes"
       />
     </>
   );

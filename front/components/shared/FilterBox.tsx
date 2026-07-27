@@ -27,7 +27,7 @@ export default function FilterBox({
           value={texto}
           onChange={onChange}
           placeholder="Buscar por nome..."
-          className="w-full bg-transparent focus:outline-none text-black placeholder:text-gray-600"
+          className="w-full bg-transparent focus:outline-none text-black placeholder:opacity-0 md:placeholder:opacity-100  placeholder:text-gray-600"
         />
       </div>
 
@@ -42,7 +42,7 @@ export default function FilterBox({
           size={24}
         />
         <span
-          className={`font-medium ${recente ? 'text-black' : 'text-blue-500'}`}
+          className={`text-[15px] md:text-xl md:font-medium ${recente ? 'text-black' : 'text-blue-500'}`}
         >
           {recente ? 'Mais recentes' : 'Mais antigos'}
         </span>
