@@ -10,13 +10,15 @@ export default async function EventosPage() {
   const content = await getEventosOrdenados();
   const categorias = Array.from(new Set(content.map((evento) => evento.tipo)));
 
+  const categoriasSorted = categorias.sort();
+
   return (
     <>
       <Header selected="repositorio" />
       <PaginaFeed
         nome="Coleções"
         posts={content}
-        categorias={categorias}
+        categorias={categoriasSorted}
         basePath="/repositorio/colecoes"
       />
     </>
