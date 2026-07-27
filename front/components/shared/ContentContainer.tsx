@@ -70,7 +70,7 @@ export default function ContentContainer({
             768: { slidesPerView: 3, slidesPerGroup: 3, spaceBetween: 20 },
             1024: { slidesPerView: 4, slidesPerGroup: 4, spaceBetween: 32 }
           }}
-          className="w-full"
+          className="w-full custom-swiper"
           slidesOffsetAfter={50}
           slidesOffsetBefore={50}
           modules={[Navigation, Pagination]}
@@ -95,11 +95,11 @@ export default function ContentContainer({
 
           {/* Estilização dos botões */}
 
-          <div className="swiper-button-prev flex justify-center items-center">
+          <div className="swiper-button-prev custom-swiper-button flex justify-center items-center">
             <Rewind size={64} color="white" />
           </div>
 
-          <div className="swiper-button-next flex justify-center items-center">
+          <div className="swiper-button-next custom-swiper-button flex justify-center items-center">
             <FastForward size={64} color="white" />
           </div>
         </Swiper>

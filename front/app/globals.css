@@ -32,25 +32,25 @@ body {
   font-family: 'Pixelify Sans', Arial, Helvetica, sans-serif;
 }
 
-.swiper-pagination {
-  position: relative !important;
+.custom-swiper{
+  .swiper-pagination {
+    position: relative !important;
+  }
 }
 
-.swiper-button-prev,
-.swiper-button-next {
+
+.custom-swiper-button{
   transition: all 150ms ease-in-out;
   padding: 8px;
 }
 
-.swiper-button-prev::after,
-.swiper-button-next::after {
+.custom-swiper-button::after{
   display: none !important;
 }
 
-.swiper-button-prev:hover,
-.swiper-button-next:hover,
-.swiper-button-prev:active,
-.swiper-button-next:active {
+
+.custom-swiper-button:hover,
+.custom-swiper-button:active {
   background: rgba(150, 149, 149, 0.7);
   border-radius: 50%;
 }
