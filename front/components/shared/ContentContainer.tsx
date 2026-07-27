@@ -8,15 +8,14 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 import ContentCard from '../ui/ContentCard';
-import Posts from '@/schemas/posts.interface';
-import { FastForward, Rewind, Expand, Minimize2 } from 'lucide-react';
-import { useState } from 'react';
+import CarregarMaisCard from '../ui/CarregarMaisCard';
+import { Conteudo } from '@/lib/content';
 
 // Container de conteúdos
 
 interface ContentContainerProps {
   titulo: string;
-  conteudo: Posts[];
+  conteudo: Conteudo[];
   basePath: string;
 }
 
@@ -85,7 +84,7 @@ export default function ContentContainer({
               <div className="py-4 px-1">
                 <ContentCard
                   slug={element.slug}
-                  cover={element.cover}
+                  cover={element.imagem}
                   nome={element.nome}
                   basePath={basePath}
                 />
