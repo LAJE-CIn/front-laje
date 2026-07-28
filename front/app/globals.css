@@ -32,22 +32,42 @@ body {
   font-family: 'Pixelify Sans', Arial, Helvetica, sans-serif;
 }
 
-.custom-swiper{
+.custom-swiper {
   .swiper-pagination {
     position: relative !important;
   }
 }
 
-
-.custom-swiper-button{
+.custom-swiper-button {
   transition: all 150ms ease-in-out;
   padding: 8px;
 }
 
-.custom-swiper-button::after{
+.custom-swiper-button::after {
   display: none !important;
 }
 
+@layer theme {
+  .clip-botao {
+    clip-path: polygon(
+      15px 0,
+      calc(100% - 15px) 0,
+      100% 15px,
+      100% calc(100% - 15px),
+      calc(100% - 15px) 100%,
+      15px 100%,
+      0 calc(100% - 15px),
+      0 15px
+    );
+  }
+
+  .bg-laje {
+    background-image: url('/assets/backgrounds/laje_pessoas_01.png');
+    background-size: contain;
+    background-position: bottom;
+    background-repeat: no-repeat;
+  }
+}
 
 .custom-swiper-button:hover,
 .custom-swiper-button:active {

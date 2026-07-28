@@ -1,65 +1,108 @@
-import Image from "next/image";
+import Link from 'next/link';
+import Image from 'next/image';
+import laje from './icon.png';
+import Header from '@/components/shared/Header';
+import BotãoGamer from '@/components/ui/BotãoGamer';
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div>
+      <Header selected="inicio"></Header>
+      {/* Landing page */}
+
+      <div className="bg-linear-to-b from-green-300/90 from-30% via-green-300/70 via-40% to-transparent">
+        <div className="min-h-screen text-center flex flex-col justify-center items-center gap-10 bg-laje bg-fixed">
+          <div className="flex flex-col items-center text-center text-4xl font-sans">
+            <h3 className="text-3xl font-medium mb-1">Bem-Vindo à</h3>
+            <h1 className="text-5xl font-black leading-tight">
+              Liga Acadêmica
+              <br />
+              de Jogos Eletrônicos
+            </h1>
+            <div className="w-80 h-px bg-gray-900/40 mt-8"></div>
+          </div>
+
+          <BotãoGamer href="#sobre" texto="PRESS START" />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+      </div>
+
+      {/* Sobre nós */}
+      <div
+        id="sobre"
+        className="flex p-10 min-h-screen justify-center items-center text-justify gap-7"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 items-center">
+          <div className="flex flex-col gap-7">
+            <h3 className="text-5xl font-black">Quem somos?</h3>
+
+            <p className="text-3xl">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos
+              reprehenderit odit delectus fugit sed, adipisci repudiandae rem
+              dolorum, cupiditate quasi, unde similique dolor. Soluta voluptates
+              adipisci cumque, ea perferendis placeat?
+            </p>
+
+            <div className="text-xl">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem
+              dolores modi voluptatum iure necessitatibus mollitia voluptatibus,
+              commodi suscipit, sunt odio, ut minus doloribus eaque laborum
+              molestiae quam maiores autem placeat.
+            </div>
+
+            <div>
+              <BotãoGamer href="#site" texto="CONTINUE"></BotãoGamer>
+            </div>
+          </div>
+          <div className="flex md:justify-center">
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+              src={laje}
+              alt="LAJE"
+              className="w-64 md:w-96 object-contain bg-black rounded-4xl p-4"
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          </div>
         </div>
-      </main>
+      </div>
+
+      {/* Sobre o site */}
+
+      <div
+        id="site"
+        className="flex p-10 min-h-screen justify-center items-center"
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 items-center">
+          <div className="flex flex-col gap-10">
+            <h3 className="text-5xl font-black">Aqui você pode encontrar...</h3>
+            <ul className="flex flex-col gap-6 text-xl md:text-2xl">
+              <li className="flex items-start gap-3">
+                <span className="text-green-500 font-black">{'>'}</span>
+                Últimas notícias da liga
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-green-500 font-black">{'>'}</span>
+                Todos os jogos e eventos que a LAJE esteve presente
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-green-500 font-black">{'>'}</span>
+                Jogos da disciplina de Introdução à Programação (IP)
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-green-500 font-black">{'>'}</span>
+                Artigos produzidos pela liga (em breve!)
+              </li>
+            </ul>
+            <div>
+              <BotãoGamer href="#" texto="RESTART"></BotãoGamer>
+            </div>
+          </div>
+          <div className="flex justify-center">
+            <Image
+              src={laje}
+              alt="LAJE"
+              className="w-64 md:w-96 object-contain bg-black rounded-4xl p-4"
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
