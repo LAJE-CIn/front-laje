@@ -64,8 +64,21 @@ body {
   .bg-laje {
     background-image: url('/assets/backgrounds/laje_pessoas_01.png');
     background-size: contain;
-    background-position: bottom;
+    background-position: bottom center;
     background-repeat: no-repeat;
+  }
+
+  @media (min-width: 768px) {
+    .bg-laje {
+      background-size: cover;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .bg-laje {
+      background-size: contain;
+      background-position: bottom;
+    }
   }
 }
 

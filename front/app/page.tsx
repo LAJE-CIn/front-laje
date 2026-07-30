@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import Image from 'next/image';
 import laje from './icon.png';
 import Header from '@/components/shared/Header';
@@ -13,8 +12,10 @@ export default function Home() {
       <div className="bg-linear-to-b from-green-300/90 from-30% via-green-300/70 via-40% to-transparent">
         <div className="min-h-screen text-center flex flex-col justify-center items-center gap-10 bg-laje bg-fixed">
           <div className="flex flex-col items-center text-center text-4xl font-sans">
-            <h3 className="text-3xl font-medium mb-1">Bem-Vindo à</h3>
-            <h1 className="text-5xl font-black leading-tight">
+            <h3 className="text-2xl md:text-3xl font-medium mb-1">
+              Bem-Vindo à
+            </h3>
+            <h1 className="text-3xl md:text-5xl font-black leading-tight">
               Liga Acadêmica
               <br />
               de Jogos Eletrônicos
@@ -29,31 +30,33 @@ export default function Home() {
       {/* Sobre nós */}
       <div
         id="sobre"
-        className="flex p-10 min-h-screen justify-center items-center text-justify gap-7"
+        className="flex p-6 md:p-10 min-h-screen justify-center items-center"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 items-center">
-          <div className="flex flex-col gap-7">
-            <h3 className="text-5xl font-black">Quem somos?</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-10 md:gap-16 max-w-6xl w-full">
+          <div className="flex flex-col gap-6 md:gap-8 text-justify">
+            <h3 className="text-3xl md:text-5xl font-black text-left leading-tight">
+              Quem somos?
+            </h3>
 
-            <p className="text-3xl">
+            <p className="text-lg md:text-2xl font-sans">
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos
               reprehenderit odit delectus fugit sed, adipisci repudiandae rem
               dolorum, cupiditate quasi, unde similique dolor. Soluta voluptates
               adipisci cumque, ea perferendis placeat?
             </p>
 
-            <div className="text-xl">
+            <div className="text-base md:text-xl font-sans">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem
               dolores modi voluptatum iure necessitatibus mollitia voluptatibus,
               commodi suscipit, sunt odio, ut minus doloribus eaque laborum
               molestiae quam maiores autem placeat.
             </div>
 
-            <div>
+            <div className="mt-2 flex justify-start">
               <BotãoGamer href="#site" texto="CONTINUE"></BotãoGamer>
             </div>
           </div>
-          <div className="flex md:justify-center">
+          <div className="flex justify-center md:justify-end">
             <Image
               src={laje}
               alt="LAJE"
@@ -64,15 +67,16 @@ export default function Home() {
       </div>
 
       {/* Sobre o site */}
-
       <div
         id="site"
-        className="flex p-10 min-h-screen justify-center items-center"
+        className="flex p-6 md:p-10 min-h-screen justify-center items-center"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 items-center">
-          <div className="flex flex-col gap-10">
-            <h3 className="text-5xl font-black">Aqui você pode encontrar...</h3>
-            <ul className="flex flex-col gap-6 text-xl md:text-2xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-10 md:gap-16 max-w-6xl w-full">
+          <div className="flex flex-col gap-6 md:gap-8">
+            <h3 className="text-3xl md:text-5xl font-black text-left leading-tight">
+              Aqui você pode encontrar...
+            </h3>
+            <ul className="flex flex-col gap-4 md:gap-6 text-lg md:text-2xl font-sans">
               <li className="flex items-start gap-3">
                 <span className="text-green-500 font-black">{'>'}</span>
                 Últimas notícias da liga
@@ -90,11 +94,11 @@ export default function Home() {
                 Artigos produzidos pela liga (em breve!)
               </li>
             </ul>
-            <div>
+            <div className="mt-2 flex justify-start">
               <BotãoGamer href="#" texto="RESTART"></BotãoGamer>
             </div>
           </div>
-          <div className="flex justify-center">
+          <div className="flex justify-center md:justify-end">
             <Image
               src={laje}
               alt="LAJE"
