@@ -38,6 +38,42 @@ body {
   }
 }
 
+@layer utilities {
+  .clip-trapezio {
+    clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
+  }
+  .clip-lateral-esq {
+    clip-path: polygon(
+      20px 0,
+      100% 0,
+      100% 100%,
+      20px 100%,
+      0 calc(100% - 20px),
+      0 20px
+    );
+  }
+
+  .clip-lateral-dir {
+    clip-path: polygon(
+      0 0,
+      calc(100% - 20px) 0,
+      100% 20px,
+      100% calc(100% - 20px),
+      calc(100% - 20px) 100%,
+      0 100%
+    );
+  }
+
+  .mask-centro {
+    mask-size: contain;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    -webkit-mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+  }
+}
+
 .custom-swiper-button {
   transition: all 150ms ease-in-out;
   padding: 8px;
