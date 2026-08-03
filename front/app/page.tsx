@@ -6,10 +6,9 @@ import BotãoGamer from '@/components/ui/BotãoGamer';
 export default function Home() {
   return (
     <div>
-      <Header selected="inicio"></Header>
       {/* Landing page */}
-
       <div className="bg-linear-to-b from-green-300/90 from-30% via-green-300/70 via-40% to-transparent">
+        <Header selected="inicio"></Header>
         <div className="min-h-screen text-center flex flex-col justify-center items-center gap-10 bg-laje bg-fixed">
           <div className="flex flex-col items-center text-center text-4xl font-sans">
             <h3 className="text-2xl md:text-3xl font-medium mb-1">

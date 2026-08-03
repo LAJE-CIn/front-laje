@@ -22,7 +22,7 @@ export default function Header({ selected }: HeaderProps) {
   };
 
   return (
-    <nav className="bg-linear-to-b from-green-300/90 from-50% via-green-300/70 via-80% to-transparent text-green-300 p-5">
+    <nav className="bg-linear-to-b from-green-300/90 from-50% via-green-300/70 via-80% to-transparent text-green-300 p-5 fixed w-full z-10">
       <div className="flex justify-between items-start text-center">
         {/* Parte Esquerda */}
         <div className="flex-1 flex justify-around h-14 relative z-0 items-center clip-lateral-esq -mr-11  bg-gray-900">
