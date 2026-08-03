@@ -1,8 +1,6 @@
 // Importações
 
 import Link from 'next/link';
-import Image from 'next/image';
-import Laje from '../../app/icon.png';
 
 // Componente Header
 
@@ -17,48 +15,49 @@ export default function Header({ selected }: HeaderProps) {
       text-xl font-bold tracking-wide pb-1 border-b-4 transition-all duration-200 ease-in-out
       ${
         isActive
-          ? 'border-black text-black'
-          : 'border-transparent text-gray-700 hover:border-black/50 hover:text-black'
+          ? 'border-green-500 text-green-300'
+          : 'border-transparent text-green-200 hover:border-green-300/50 hover:text-green-500'
       }
     `;
   };
 
   return (
-    <nav
-      className="bg-linear-to-b from-green-300/90 from-50% via-green-300/70 via-80% to-transparent
-                 flex justify-between items-center text-center"
-    >
-      {/* Parte Esquerda */}
-      <div className="flex-1 flex justify-around items-center">
-        <Link href={'/'} className={getLinkStyle('inicio')}>
-          Início
-        </Link>
-        <Link href={'/noticias'} className={getLinkStyle('noticias')}>
-          Notícias
-        </Link>
-      </div>
-
-      {/* Parte da Imagem */}
-
-      <div className="shrink-0 flex flex-col items-center">
-        <div className="w-40 h-30 [clip-path:polygon(0_0,100%_0,50%_100%)] bg-linear-to-b from-gray-900 via-gray-600/50 to-transparent flex justify-center pt-4">
-          <Image
-            src={Laje}
-            alt="Logo da Laje"
-            className="max-w-20 h-15 object-contain"
-          />
+    <nav className="bg-linear-to-b from-green-300/90 from-50% via-green-300/70 via-80% to-transparent text-green-300 p-5">
+      <div className="flex justify-between items-start text-center">
+        {/* Parte Esquerda */}
+        <div className="flex-1 flex justify-around h-14 relative z-0 items-center clip-lateral-esq -mr-11  bg-gray-900">
+          <Link href={'/'} className={getLinkStyle('inicio')}>
+            Início
+          </Link>
+          <Link href={'/noticias'} className={getLinkStyle('noticias')}>
+            Notícias
+          </Link>
         </div>
-      </div>
 
-      {/* Parte da Direita */}
+        {/* Parte da Imagem */}
 
-      <div className="flex-1 flex justify-around items-center">
-        <Link href={'/repositorio'} className={getLinkStyle('repositorio')}>
-          Repositório
-        </Link>
-        <Link href={'/artigos'} className={getLinkStyle('artigos')}>
-          Artigos
-        </Link>
+        <div className="shrink-0 flex flex-col items-center relative z-10">
+          <div className="w-100 h-20 clip-trapezio bg-linear-to-b bg-gray-900 flex justify-center items-center">
+            <div
+              className="w-15 h-15 bg-green-300 mask-centro"
+              style={{
+                maskImage: `url('/icon.png')`,
+                WebkitMaskImage: `url('/icon.png')`
+              }}
+            />
+          </div>
+        </div>
+
+        {/* Parte da Direita */}
+
+        <div className="flex-1 h-14 relative z-0 flex justify-around items-center -ml-11  clip-lateral-dir bg-gray-900">
+          <Link href={'/artigos'} className={getLinkStyle('artigos')}>
+            Artigos
+          </Link>
+          <Link href={'/repositorio'} className={getLinkStyle('repositorio')}>
+            Repositório
+          </Link>
+        </div>
       </div>
     </nav>
   );

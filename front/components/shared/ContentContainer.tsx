@@ -1,14 +1,14 @@
 'use client';
 
 // Importações
+import { useState } from 'react';
+import { Expand, FastForward, Minimize2, Rewind } from 'lucide-react';
 import { Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-
 import ContentCard from '../ui/ContentCard';
-import CarregarMaisCard from '../ui/CarregarMaisCard';
 import { Conteudo } from '@/lib/content';
 
 // Container de conteúdos
@@ -109,7 +109,7 @@ export default function ContentContainer({
             <div key={element.slug} className="py-4 px-1">
               <ContentCard
                 slug={element.slug}
-                cover={element.cover}
+                cover={element.imagem}
                 nome={element.nome}
                 basePath={basePath}
               />

@@ -33,13 +33,18 @@ export default function PaginaFeed({
       if (post.nome.toLowerCase().includes(pesquisa)) return true;
       if (post.tipo.toLowerCase().includes(pesquisa)) return true;
 
-      if ("engine" in post){
+      if ('engine' in post) {
         if (post.engine?.toLowerCase().includes(pesquisa)) return true;
-        if (post.authors?.some((author) => author.toLowerCase().includes(pesquisa))) return true;
+        if (
+          post.authors?.some((author) =>
+            author.toLowerCase().includes(pesquisa)
+          )
+        )
+          return true;
       }
 
       return false;
-    })
+    });
   }
 
   postsFiltrados.sort((a, b) => {
