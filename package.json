@@ -24,6 +24,7 @@
     "typescript-eslint": "^8.63.0"
   },
   "dependencies": {
-    "dotenv": "^17.4.2"
+    "dotenv": "^17.4.2",
+    "react-select": "^5.10.2"
   }
 }
