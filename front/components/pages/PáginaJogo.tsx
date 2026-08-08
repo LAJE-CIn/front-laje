@@ -1,13 +1,15 @@
 // Importações
 
-import Posts from '@/schemas/posts.interface';
+import Image from 'next/image';
 import BotãoVoltar from '../ui/BotãoVoltar';
+import { MDXContent } from '../shared/mdx-content';
 import ItchBadge from '../ui/ItchBadge';
+import type { Jogo } from '#site/content';
 
 // Layout de página de detalhe de um jogo (capa + corpo)
 
 interface PaginaJogoProps {
-  jogo: Posts;
+  jogo: Jogo;
   basePath: string;
 }
 
@@ -31,27 +33,29 @@ export default function PaginaJogo({ jogo, basePath }: PaginaJogoProps) {
 
       <div className="flex flex-col md:flex-row gap-6 border-2 border-black bg-white/50 rounded-xs p-6 shadow-2xl">
         {/* Capa */}
-        <img
-          src={jogo.cover}
+        <Image
+          src={jogo.imagem}
           alt={`Capa do jogo ${jogo.nome}`}
+          loading="eager"
+          width={320}
+          height={208}
           className="w-full md:w-80 h-52 object-cover border-2 border-black rounded-xs shrink-0"
         />
 
         {/* Corpo: descrição + informações + selo do itch.io */}
         <div className="flex flex-col justify-between flex-1 gap-4">
           <div className="flex flex-col gap-3">
-            <p className="text-black whitespace-pre-line">{jogo.content}</p>
-
+            <MDXContent code={jogo.body} />
             <div className="flex flex-col gap-1 text-black font-medium">
-              {jogo.participantes && <p>Participantes: {jogo.participantes}</p>}
+              {jogo.authors && <p>Autores: {jogo.authors}</p>}
               <p>Gênero: {jogo.tipo}</p>
               {jogo.engine && <p>Engine: {jogo.engine}</p>}
             </div>
           </div>
 
-          {jogo.itchLink && (
+          {jogo.link && (
             <div className="flex justify-end">
-              <ItchBadge href={jogo.itchLink} />
+              <ItchBadge href={jogo.link} />
             </div>
           )}
         </div>

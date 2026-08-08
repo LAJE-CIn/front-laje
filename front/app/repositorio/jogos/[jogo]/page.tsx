@@ -1,15 +1,9 @@
 // Importações
 
-import { getAllJogos, getJogo } from '@/lib/posts';
+import { notFound } from 'next/navigation';
+import { getJogo } from '@/lib/content';
 import Header from '@/components/shared/Header';
 import PaginaJogo from '@/components/pages/PáginaJogo';
-
-// Gera as rotas estáticas de cada jogo em tempo de build
-
-export function generateStaticParams() {
-  const jogos = getAllJogos();
-  return jogos.map((jogo) => ({ jogo: jogo.slug }));
-}
 
 // Página de detalhe de um jogo
 
@@ -19,7 +13,11 @@ export default async function JogoPage({
   params: Promise<{ jogo: string }>;
 }) {
   const { jogo: slug } = await params;
-  const jogo = getJogo(slug);
+  const jogo = await getJogo(slug, true);
+
+  if (!jogo) {
+    notFound();
+  }
 
   return (
     <>
