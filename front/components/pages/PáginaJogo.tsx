@@ -3,7 +3,6 @@
 import Image from 'next/image';
 import BotãoVoltar from '../ui/BotãoVoltar';
 import { MDXContent } from '../shared/mdx-content';
-import ItchBadge from '../ui/ItchBadge';
 import type { Jogo } from '#site/content';
 
 // Layout de página de detalhe de um jogo (capa + corpo)
@@ -12,6 +11,21 @@ interface PaginaJogoProps {
   jogo: Jogo;
   basePath: string;
 }
+
+const mdxComponents = {
+  p: (props: React.ComponentPropsWithoutRef<'p'>) => (
+    <p className="text-xl font-medium" {...props} />
+  ),
+  ul: (props: React.ComponentPropsWithoutRef<'ul'>) => (
+    <ul
+      className="list-disc list-inside ml-4 mb-4 font-medium text-xl"
+      {...props}
+    />
+  ),
+  li: (props: React.ComponentPropsWithoutRef<'li'>) => (
+    <li className="mb-1" {...props} />
+  )
+};
 
 export default function PaginaJogo({ jogo, basePath }: PaginaJogoProps) {
   return (
@@ -32,31 +46,40 @@ export default function PaginaJogo({ jogo, basePath }: PaginaJogoProps) {
       {/* Capa + corpo */}
 
       <div className="flex flex-col md:flex-row gap-6 border-2 border-black bg-white/50 rounded-xs p-6 shadow-2xl">
-        {/* Capa */}
-        <Image
-          src={jogo.imagem}
-          alt={`Capa do jogo ${jogo.nome}`}
-          loading="eager"
-          width={320}
-          height={208}
-          className="w-full md:w-80 h-52 object-cover border-2 border-black rounded-xs shrink-0"
-        />
+        {/* Capa e informações */}
+        <div className="flex flex-col gap-6 ">
+          <Image
+            src={jogo.imagem}
+            alt={`Capa do jogo ${jogo.nome}`}
+            loading="eager"
+            width={320}
+            height={208}
+            className="w-full md:w-80 h-52 object-cover border-2 border-black rounded-xs shrink-0"
+          />
+
+          <div className="flex flex-col gap-1 text-black font-medium text-xl">
+            <h2 className="text-xl md:text-3xl">Detalhes do projeto:</h2>
+            {jogo.authors && <p>Autores: {jogo.authors.join(', ')}</p>}
+            <p>Gênero: {jogo.tipo}</p>
+            {jogo.engine && <p>Engine: {jogo.engine}</p>}
+          </div>
+        </div>
 
         {/* Corpo: descrição + informações + selo do itch.io */}
         <div className="flex flex-col justify-between flex-1 gap-4">
           <div className="flex flex-col gap-3">
-            <MDXContent code={jogo.body} />
-            <div className="flex flex-col gap-1 text-black font-medium">
-              {jogo.authors && <p>Autores: {jogo.authors}</p>}
-              <p>Gênero: {jogo.tipo}</p>
-              {jogo.engine && <p>Engine: {jogo.engine}</p>}
-            </div>
+            <MDXContent code={jogo.body} components={mdxComponents} />
           </div>
 
+          <hr />
+
+          <h2 className="text-xl md:text-2xl">Disponível em:</h2>
+
           {jogo.link && (
-            <div className="flex justify-end">
-              <ItchBadge href={jogo.link} />
-            </div>
+            <iframe
+              src="https://itch.io/embed/3064138"
+              className="max-w-138 h-42 w-full"
+            ></iframe>
           )}
         </div>
       </div>

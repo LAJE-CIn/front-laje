@@ -38,7 +38,8 @@ export default defineConfig({
         body: s.mdx(),
         engine: s.string().trim().toLowerCase().optional(),
         authors: s.array(s.string().trim()).default([]),
-        link: s.string().trim().optional() // no momento opcional, mas é algo obrigatorio
+        link: s.string().trim().optional(), // no momento opcional, mas é algo obrigatorio
+        repo: s.enum(['git', 'itch']).optional() // obrigatorio, mas no momento opcional, vai falar qual quer mostar (git ou itch)
       })
     }
   },
