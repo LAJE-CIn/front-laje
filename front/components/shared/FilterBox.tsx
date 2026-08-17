@@ -1,25 +1,45 @@
 // Importações
 
-import { Search, ListFilter, Calendar, BookA } from 'lucide-react';
-import Select from 'react-select';
+import { Search, Calendar, BookA, ListTodo, Pencil } from 'lucide-react';
+import Select, { ActionMeta } from 'react-select';
+
+// Tipo para opções do react-select
+type Option = {
+  value: string;
+  label: string;
+};
 
 // Componente de Filtro
 
 interface FilterBoxProps {
   texto: string;
-  recente: boolean;
-  selecionado: string;
-  onClickList: () => void;
+  tipos: string[];
+  tipoSelecionado: string;
+  ordemSelecionado: string;
+  categorias: string[];
+  categoriasSelecionado: string[];
   onChangePesquisa: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onChangeSelecionado: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  onChangeTipo: (option: Option | null, actionMeta: ActionMeta<Option>) => void;
+  onChangeOrdem: (
+    option: Option | null,
+    actionMeta: ActionMeta<Option>
+  ) => void;
+  onChangeSelecionado: (
+    option: readonly Option[],
+    actionMeta: ActionMeta<Option>
+  ) => void;
 }
 
 export default function FilterBox({
   texto,
-  recente,
-  selecionado,
-  onClickList,
+  tipos,
+  tipoSelecionado,
+  ordemSelecionado,
+  categorias,
+  categoriasSelecionado,
   onChangePesquisa,
+  onChangeTipo,
+  onChangeOrdem,
   onChangeSelecionado
 }: FilterBoxProps) {
   const opçõesOrdem = [
@@ -29,8 +49,33 @@ export default function FilterBox({
     { value: 'Nome - Z a A', label: 'Nome - Z a A' }
   ];
 
+  const opçõesTipos = tipos.map((tipo) => ({
+    value: tipo,
+    label: tipo
+  }));
+
+  const opçõesCategorias = categorias.map((categoria) => ({
+    value: categoria,
+    label: categoria
+  }));
+
+  const tipoOption = {
+    value: tipoSelecionado,
+    label: tipoSelecionado
+  };
+
+  const ordemOption = {
+    value: ordemSelecionado,
+    label: ordemSelecionado
+  };
+
+  const categoriasOptions = categoriasSelecionado.map((categoria) => ({
+    value: categoria,
+    label: categoria
+  }));
+
   return (
-    <div className="flex items-center justify-between gap-4">
+    <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
       {/* Container de Busca */}
       <div className="flex flex-1 items-center gap-3 bg-white/60 border-2 border-black rounded-full px-4 py-2 max-w-md">
         <Search className="text-black" size={20} />
@@ -38,42 +83,58 @@ export default function FilterBox({
           type="text"
           value={texto}
           onChange={onChangePesquisa}
-          placeholder="Buscar por nome..."
+          placeholder={`Buscar por ${tipoSelecionado.toLowerCase()}`}
           className="w-full bg-transparent focus:outline-none text-black placeholder:opacity-0 md:placeholder:opacity-100  placeholder:text-gray-600"
         />
       </div>
 
-      {/* Botão de Ordenação */}
-      <button
-        onClick={onClickList}
-        className="flex items-center gap-2 cursor-pointer transition-opacity"
-        aria-label="Alternar ordem de exibição"
-      >
-        <ListFilter
-          className={recente ? 'text-black' : 'text-blue-500'}
-          size={24}
-        />
-        <span
-          className={`text-[15px] md:text-xl md:font-medium ${recente ? 'text-black' : 'text-blue-500'}`}
-        >
-          {recente ? 'Mais recentes' : 'Mais antigos'}
-        </span>
-      </button>
+      {/* Alterar filtro da busca */}
 
-      {/* Lista de ordenação */}
+      <div className="flex flex-col md:flex-row gap-7">
+        <div className="flex items-center hover:cursor-pointer gap-2">
+          <Pencil className="text-black" size={24} />
 
-      <div className="flex items-center hover:cursor-pointer gap-2">
-        {selecionado.includes('Data') ? (
-          <Calendar className="text-black" size={24} />
-        ) : (
-          <BookA className="text-black" size={24} />
-        )}
+          <Select
+            value={tipoOption}
+            options={opçõesTipos}
+            onChange={onChangeTipo}
+            className="z-9"
+          />
+        </div>
 
-        <Select options={opçõesOrdem} className="z-10" />
+        {/* Lista de ordenação */}
+
+        <div className="flex items-center hover:cursor-pointer gap-2">
+          {ordemOption?.value.includes('Data') ? (
+            <Calendar className="text-black" size={24} />
+          ) : (
+            <BookA className="text-black" size={24} />
+          )}
+
+          <Select
+            value={ordemOption}
+            options={opçõesOrdem}
+            onChange={onChangeOrdem}
+            className="z-8"
+          />
+        </div>
+
+        {/* Lista de categorias */}
+
+        <div className="flex items-center hover:cursor-pointer gap-2">
+          <ListTodo className="text-black" size={24} />
+
+          <Select
+            isMulti
+            value={categoriasOptions}
+            options={opçõesCategorias}
+            isClearable={true}
+            placeholder="Selecione categorias..."
+            className="z-7"
+            onChange={onChangeSelecionado}
+          />
+        </div>
       </div>
-
-      {/* Lista de categorias */}
-      <Select isMulti options={opçõesOrdem} isClearable={true} />
     </div>
   );
 }
