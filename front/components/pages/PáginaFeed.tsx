@@ -25,6 +25,7 @@ export default function PaginaFeed({
   // Opções de filtro
   const [pesquisa, setPesquisa] = useState('');
   const [recente, setRecente] = useState(true);
+  const [ordem, setOrdem] = useState('Data - Mais recentes');
 
   let postsFiltrados = [...posts];
 
@@ -62,6 +63,10 @@ export default function PaginaFeed({
     setPesquisa(e.target.value.toLowerCase());
   };
 
+  const mudarOrdemSelecionada = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setOrdem(e.target.value);
+  };
+
   const containerPorCategoria = Object.groupBy(
     postsFiltrados,
     (post) => post.tipo
@@ -82,8 +87,10 @@ export default function PaginaFeed({
         <FilterBox
           texto={pesquisa}
           recente={recente}
-          onChange={mudarPesquisa}
+          selecionado={ordem}
+          onChangePesquisa={mudarPesquisa}
           onClickList={mudarOrdem}
+          onChangeSelecionado={mudarOrdemSelecionada}
         />
 
         {pesquisa !== '' && (
