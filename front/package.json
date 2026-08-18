@@ -3,10 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "predev": "velite",
     "dev": "next dev",
+    "prebuild": "velite",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
+  },
+  "imports": {
+    "#site/content": "./.velite"
   },
   "dependencies": {
     "gray-matter": "^4.0.3",
