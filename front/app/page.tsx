@@ -11,17 +11,17 @@ export default function Home() {
         <div className="fixed w-full z-10">
           <Header selected="inicio"></Header>
         </div>
-        <div className="min-h-screen text-center flex flex-col justify-center items-center gap-10 bg-laje bg-fixed">
+        <div className="min-h-screen text-center flex flex-col justify-center items-center gap-8 md:gap-10 pt-20 px-4 bg-laje bg-no-repeat bg-bottom bg-contain lg:bg-fixed">
           <div className="flex flex-col items-center text-center text-4xl font-sans">
-            <h3 className="text-2xl md:text-3xl font-medium mb-1">
+            <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium mb-2">
               Bem-Vindo à
             </h3>
-            <h1 className="text-3xl md:text-5xl font-black leading-tight">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight max-w-4xl">
               Liga Acadêmica
               <br />
               de Jogos Eletrônicos
             </h1>
-            <div className="w-80 h-px bg-gray-900/40 mt-8"></div>
+            <div className="w-48 sm:w-80 h-px bg-gray-900/40 mt-6 md:mt-8"></div>
           </div>
 
           <BotãoGamer href="#sobre" texto="PRESS START" />
