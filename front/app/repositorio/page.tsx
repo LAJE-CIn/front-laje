@@ -26,33 +26,36 @@ export default async function RepositorioPage() {
     <div className="min-h-screen flex flex-col pb-16">
       <Header selected="repositorio" />
 
-      <main className="flex-1 flex flex-col gap-10 max-w-7xl mx-auto w-full px-4 pt-28 sm:pt-36">
+      <main className="flex-1 flex flex-col gap-10 max-w-7xl mx-auto w-full px-2 sm:px4 pt-10 sm:pt-28">
         {/* Banner de atalho para as seções principais */}
-        <div className="flex flex-col md:flex-row justify-center items-center gap-6 bg-gray-900/90 border-2 border-green-500 rounded-2xl p-6 shadow-xl">
-          <div className="flex flex-col items-center gap-3 w-full md:w-1/2">
-            <BotãoOpção
-              texto={botãoJogo.texto}
-              cor={botãoJogo.cor}
-              path={botãoJogo.path}
-            />
-            <p className="text-gray-300 text-sm sm:text-base text-center max-w-xs font-sans">
-              Procure por jogos individuais, separados por gênero e com filtros.
-            </p>
-          </div>
+        <section className="min-h-[60vh] sm:min-h-[70vh] flex flex-col justify-center">
+          <div className="flex flex-col md:flex-row justify-center items-center gap-6 bg-gray-900/90 border-2 border-green-500 rounded-2xl p-6 sm:p-10 shadow-xl">
+            <div className="flex flex-col items-center gap-3 w-full md:w-1/2">
+              <BotãoOpção
+                texto={botãoJogo.texto}
+                cor={botãoJogo.cor}
+                path={botãoJogo.path}
+              />
+              <p className="text-gray-300 text-sm sm:text-base text-center max-w-xs font-sans">
+                Procure por jogos individuais, separados por gênero e com
+                filtros.
+              </p>
+            </div>
 
-          <div className="hidden md:block w-px h-24 bg-gray-700" />
+            <div className="hidden md:block w-px h-24 bg-gray-700" />
 
-          <div className="flex flex-col items-center gap-3 w-full md:w-1/2">
-            <BotãoOpção
-              texto={botãoColecoes.texto}
-              cor={botãoColecoes.cor}
-              path={botãoColecoes.path}
-            />
-            <p className="text-gray-300 text-sm sm:text-base text-center max-w-xs font-sans">
-              Procure por coleções de jogos, gamejams, eventos e IP.
-            </p>
+            <div className="flex flex-col items-center gap-3 w-full md:w-1/2">
+              <BotãoOpção
+                texto={botãoColecoes.texto}
+                cor={botãoColecoes.cor}
+                path={botãoColecoes.path}
+              />
+              <p className="text-gray-300 text-sm sm:text-base text-center max-w-xs font-sans">
+                Procure por coleções de jogos, gamejams, eventos e IP.
+              </p>
+            </div>
           </div>
-        </div>
+        </section>
 
         {/* Carrossel de Jogos */}
         <section className="flex flex-col gap-4">
@@ -99,4 +102,3 @@ export default async function RepositorioPage() {
     </div>
   );
 }
-

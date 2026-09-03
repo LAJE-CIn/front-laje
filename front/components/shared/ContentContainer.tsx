@@ -29,8 +29,6 @@ export default function ContentContainer({
   // Safe CSS selector identifier
   const uniqueId = rawId.replace(/[^a-zA-Z0-9_-]/g, '');
 
-  const toggleExpand = () => setIsExpanded((prev) => !prev);
-
   const prevClass = `swiper-button-prev-${uniqueId}`;
   const nextClass = `swiper-button-next-${uniqueId}`;
 
@@ -41,22 +39,6 @@ export default function ContentContainer({
         <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-black tracking-wide">
           {titulo}
         </h3>
-        {conteudo.length >= 4 && (
-          <button
-            className="flex items-center justify-center p-2 rounded-lg hover:cursor-pointer hover:bg-black/10 transition-all ease-in-out"
-            onClick={toggleExpand}
-            aria-label={
-              isExpanded ? 'Recolher visualização' : 'Expandir visualização'
-            }
-            title={isExpanded ? 'Recolher' : 'Expandir'}
-          >
-            {!isExpanded ? (
-              <Expand size={26} className="text-black" />
-            ) : (
-              <Minimize2 size={26} className="text-black" />
-            )}
-          </button>
-        )}
       </div>
 
       {/* Cards com slider */}
@@ -88,7 +70,10 @@ export default function ContentContainer({
             }}
           >
             {conteudo.map((element) => (
-              <SwiperSlide key={element.slug} className="h-full pb-8 pt-1 flex justify-center">
+              <SwiperSlide
+                key={element.slug}
+                className="h-full pb-8 pt-1 flex justify-center"
+              >
                 <div className="w-full h-full flex justify-center">
                   <ContentCard
                     slug={element.slug}
@@ -136,4 +121,3 @@ export default function ContentContainer({
     </div>
   );
 }
-
