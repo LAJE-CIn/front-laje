@@ -104,7 +104,7 @@ export default function ContentContainer({
         </Swiper>
       ) : (
         /* Expandido */
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-7 items-center justify-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-7 items-center justify-center">
           {conteudo.map((element) => (
             <div key={element.slug} className="py-4 px-1">
               <ContentCard
