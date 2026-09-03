@@ -12,11 +12,14 @@ export default async function EventosPage() {
 
   const categoriasSorted = categorias.sort();
 
+  const tiposBusca = ['Nome'];
+
   return (
     <>
       <Header selected="repositorio" />
       <PaginaFeed
         nome="Coleções"
+        tipos={tiposBusca}
         posts={content}
         categorias={categoriasSorted}
         basePath="/repositorio/colecoes"

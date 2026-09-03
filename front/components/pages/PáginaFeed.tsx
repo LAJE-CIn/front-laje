@@ -1,17 +1,25 @@
 'use client';
 
-import { Conteudo } from '@/lib/content';
 // Importações
+import { Conteudo } from '@/lib/content';
 import ContentContainer from '../shared/ContentContainer';
 import FilterBox from '../shared/FilterBox';
 import BotãoVoltar from '../ui/BotãoVoltar';
 import { useState } from 'react';
+import { SingleValue, MultiValue } from 'react-select';
+
+// Tipo para opções do react-select
+type Option = {
+  value: string;
+  label: string;
+};
 
 // Layout de página de Feed (eventos e jogos)
 
 interface PaginaFeedProps {
   nome: string;
   posts: Conteudo[];
+  tipos: string[];
   categorias: string[];
   basePath: string;
 }
@@ -19,52 +27,84 @@ interface PaginaFeedProps {
 export default function PaginaFeed({
   nome,
   posts,
+  tipos,
   categorias,
   basePath
 }: PaginaFeedProps) {
   // Opções de filtro
-  const [pesquisa, setPesquisa] = useState('');
-  const [recente, setRecente] = useState(true);
-  const [ordem, setOrdem] = useState('Data - Mais recentes');
+  const [pesquisa, setPesquisa] = useState<string>('');
+  const [tipo, setTipo] = useState<string>('Nome');
+  const [ordem, setOrdem] = useState<string>('Data - Mais recentes');
+  const [selecionados, setSelecionados] = useState<string[]>([]);
 
   let postsFiltrados = [...posts];
 
+  // Busca por pesquisa
+
   if (pesquisa) {
     postsFiltrados = postsFiltrados.filter((post) => {
-      if (post.nome.toLowerCase().includes(pesquisa)) return true;
-      if (post.tipo.toLowerCase().includes(pesquisa)) return true;
+      if (tipo === 'Nome') {
+        return post.nome.toLowerCase().includes(pesquisa) ?? false;
+      }
 
-      if ('engine' in post) {
-        if (post.engine?.toLowerCase().includes(pesquisa)) return true;
-        if (
-          post.authors?.some((author) =>
-            author.toLowerCase().includes(pesquisa)
-          )
-        )
-          return true;
+      if (tipo === 'Engine' && 'engine' in post) {
+        return post.engine?.toLowerCase().includes(pesquisa) ?? false;
+      }
+
+      if (tipo === 'Autor' && 'authors' in post) {
+        return (
+          post.authors?.find((elem) => elem.toLowerCase().includes(pesquisa)) ??
+          false
+        );
       }
 
       return false;
     });
   }
 
-  postsFiltrados.sort((a, b) => {
-    const dataA = new Date(a.dataPublicacao || 0).getTime();
-    const dataB = new Date(b.dataPublicacao || 0).getTime();
-    return recente ? dataB - dataA : dataA - dataB;
-  });
+  // Busca por categoria
+  const categoriasFiltradas =
+    selecionados.length > 0
+      ? categorias.filter((categoria) => selecionados.includes(categoria))
+      : categorias;
+
+  // Ordenação da busca (nome ou data)
+
+  const inverso = ordem.includes('antigos') || ordem.includes('Z a A');
+
+  if (ordem.includes('Data')) {
+    postsFiltrados.sort((a, b) => {
+      const dataA = new Date(a.dataPublicacao || 0).getTime();
+      const dataB = new Date(b.dataPublicacao || 0).getTime();
+      return inverso ? dataB - dataA : dataA - dataB;
+    });
+  }
+
+  if (ordem.includes('Nome')) {
+    postsFiltrados.sort((a, b) => {
+      const nomeA = a.nome.toLowerCase();
+      const nomeB = b.nome.toLocaleLowerCase();
+      return inverso ? nomeB.localeCompare(nomeA) : nomeA.localeCompare(nomeB);
+    });
+  }
 
   // Props de filtro
-  const mudarOrdem = () => {
-    setRecente(!recente);
-  };
 
   const mudarPesquisa = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPesquisa(e.target.value.toLowerCase());
   };
 
-  const mudarOrdemSelecionada = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setOrdem(e.target.value);
+  const mudarTipoPesquisa = (newValue: SingleValue<Option>) => {
+    setTipo(newValue ? newValue.value : '');
+  };
+
+  const mudarOrdemSelecionada = (newValue: SingleValue<Option>) => {
+    setOrdem(newValue ? newValue.value : '');
+  };
+
+  const mudarCategoriaSelecionada = (newValue: MultiValue<Option>) => {
+    const valores = newValue.map((opcao) => opcao.value);
+    setSelecionados(valores);
   };
 
   const containerPorCategoria = Object.groupBy(
@@ -72,7 +112,7 @@ export default function PaginaFeed({
     (post) => post.tipo
   );
 
-  const categoriasParaRenderizar = categorias.filter(
+  const categoriasParaRenderizar = categoriasFiltradas.filter(
     (categoria) => containerPorCategoria[categoria] !== undefined
   );
 
@@ -86,11 +126,15 @@ export default function PaginaFeed({
       <div className="flex flex-col gap-2 md:flex-row md:justify-between md:items-center">
         <FilterBox
           texto={pesquisa}
-          recente={recente}
-          selecionado={ordem}
+          tipos={tipos}
+          tipoSelecionado={tipo}
+          ordemSelecionado={ordem}
+          categorias={categorias}
+          categoriasSelecionado={selecionados}
           onChangePesquisa={mudarPesquisa}
-          onClickList={mudarOrdem}
-          onChangeSelecionado={mudarOrdemSelecionada}
+          onChangeTipo={mudarTipoPesquisa}
+          onChangeOrdem={mudarOrdemSelecionada}
+          onChangeSelecionado={mudarCategoriaSelecionada}
         />
 
         {pesquisa !== '' && (
