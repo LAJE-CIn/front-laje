@@ -1,7 +1,7 @@
 'use client';
 
 // Importações
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import { Expand, FastForward, Minimize2, Rewind } from 'lucide-react';
 import { Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -24,22 +24,26 @@ export default function ContentContainer({
   conteudo,
   basePath
 }: ContentContainerProps) {
-  // State para expansão
-
   const [isExpanded, setIsExpanded] = useState(false);
+  const rawId = useId();
+  // Safe CSS selector identifier
+  const uniqueId = rawId.replace(/[^a-zA-Z0-9_-]/g, '');
 
   const toggleExpand = () => setIsExpanded((prev) => !prev);
 
+  const prevClass = `swiper-button-prev-${uniqueId}`;
+  const nextClass = `swiper-button-next-${uniqueId}`;
+
   return (
-    <div className="flex flex-col justify-center border-2 border-black bg-white/50 rounded-xs p-6 gap-6 shadow-2xl">
+    <div className="flex flex-col justify-center border-2 border-black bg-white/50 rounded-2xl p-4 sm:p-6 gap-4 sm:gap-6 shadow-xl">
       {/* Nome e expansão */}
-      <div className="flex justify-between">
-        <h1 className="text-3xl font-bold text-black tracking-wide">
+      <div className="flex justify-between items-center">
+        <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-black tracking-wide">
           {titulo}
-        </h1>
-        {conteudo.length >= 5 && (
+        </h3>
+        {conteudo.length >= 4 && (
           <button
-            className="flex items-center justify-center p-2 rounded-md hover:cursor-pointer hover:bg-black/10 transition-all ease-in-out"
+            className="flex items-center justify-center p-2 rounded-lg hover:cursor-pointer hover:bg-black/10 transition-all ease-in-out"
             onClick={toggleExpand}
             aria-label={
               isExpanded ? 'Recolher visualização' : 'Expandir visualização'
@@ -47,9 +51,9 @@ export default function ContentContainer({
             title={isExpanded ? 'Recolher' : 'Expandir'}
           >
             {!isExpanded ? (
-              <Expand size={30} color="black"></Expand>
+              <Expand size={26} className="text-black" />
             ) : (
-              <Minimize2 size={30} color="black"></Minimize2>
+              <Minimize2 size={26} className="text-black" />
             )}
           </button>
         )}
@@ -57,56 +61,68 @@ export default function ContentContainer({
 
       {/* Cards com slider */}
       {!isExpanded ? (
-        <Swiper
-          breakpoints={{
-            0: {
-              slidesPerView: 1,
-              slidesPerGroup: 1,
-              spaceBetween: 10,
-              slidesOffsetAfter: 20,
-              slidesOffsetBefore: 20
-            },
-            768: { slidesPerView: 3, slidesPerGroup: 3, spaceBetween: 20 },
-            1024: { slidesPerView: 4, slidesPerGroup: 4, spaceBetween: 32 }
-          }}
-          className="w-full custom-swiper"
-          slidesOffsetAfter={50}
-          slidesOffsetBefore={50}
-          modules={[Navigation, Pagination]}
-          pagination={{ clickable: true }}
-          navigation={{
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev'
-          }}
-        >
-          {conteudo.map((element) => (
-            <SwiperSlide key={element.slug}>
-              <div className="py-4 px-1">
-                <ContentCard
-                  slug={element.slug}
-                  cover={element.imagem}
-                  nome={element.nome}
-                  basePath={basePath}
-                />
-              </div>
-            </SwiperSlide>
-          ))}
+        <div className="relative w-full h-[250px] sm:h-[300px] md:h-[340px] px-1 sm:px-10">
+          <Swiper
+            slidesPerView={1.2}
+            spaceBetween={12}
+            breakpoints={{
+              520: {
+                slidesPerView: 2,
+                spaceBetween: 16
+              },
+              768: {
+                slidesPerView: 3,
+                spaceBetween: 20
+              },
+              1024: {
+                slidesPerView: 4,
+                spaceBetween: 24
+              }
+            }}
+            className="w-full h-full custom-swiper"
+            modules={[Navigation, Pagination]}
+            pagination={{ clickable: true, dynamicBullets: true }}
+            navigation={{
+              nextEl: `.${nextClass}`,
+              prevEl: `.${prevClass}`
+            }}
+          >
+            {conteudo.map((element) => (
+              <SwiperSlide key={element.slug} className="h-full pb-8 pt-1 flex justify-center">
+                <div className="w-full h-full flex justify-center">
+                  <ContentCard
+                    slug={element.slug}
+                    cover={element.imagem}
+                    nome={element.nome}
+                    basePath={basePath}
+                  />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
 
-          {/* Estilização dos botões */}
+          {/* Botões de Navegação Customizados */}
+          <button
+            type="button"
+            className={`${prevClass} custom-swiper-button absolute left-0 top-1/2 -translate-y-1/2 z-10 hidden sm:flex justify-center items-center cursor-pointer bg-gray-900/80 hover:bg-gray-900 text-white rounded-full p-2 border border-green-400 shadow-md transition-all active:scale-95`}
+            aria-label="Anterior"
+          >
+            <Rewind size={24} className="text-green-400" />
+          </button>
 
-          <div className="swiper-button-prev custom-swiper-button flex justify-center items-center">
-            <Rewind size={64} color="white" />
-          </div>
-
-          <div className="swiper-button-next custom-swiper-button flex justify-center items-center">
-            <FastForward size={64} color="white" />
-          </div>
-        </Swiper>
+          <button
+            type="button"
+            className={`${nextClass} custom-swiper-button absolute right-0 top-1/2 -translate-y-1/2 z-10 hidden sm:flex justify-center items-center cursor-pointer bg-gray-900/80 hover:bg-gray-900 text-white rounded-full p-2 border border-green-400 shadow-md transition-all active:scale-95`}
+            aria-label="Próximo"
+          >
+            <FastForward size={24} className="text-green-400" />
+          </button>
+        </div>
       ) : (
         /* Expandido */
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-7 items-center justify-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 items-center justify-center">
           {conteudo.map((element) => (
-            <div key={element.slug} className="py-4 px-1">
+            <div key={element.slug} className="h-[250px] sm:h-[300px] w-full">
               <ContentCard
                 slug={element.slug}
                 cover={element.imagem}
@@ -120,3 +136,4 @@ export default function ContentContainer({
     </div>
   );
 }
+
