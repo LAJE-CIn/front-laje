@@ -29,7 +29,7 @@ const mdxComponents = {
 
 export default function PaginaJogo({ jogo, basePath }: PaginaJogoProps) {
   return (
-    <div className="flex flex-col gap-5 m-4">
+    <div className="flex flex-col gap-5 m-4 pt-28 sm:pt-36">
       {/* Breadcrumb e botão de voltar */}
 
       <div className="flex justify-between items-center">

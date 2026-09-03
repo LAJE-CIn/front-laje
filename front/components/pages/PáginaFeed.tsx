@@ -117,7 +117,7 @@ export default function PaginaFeed({
   );
 
   return (
-    <div className="flex flex-col gap-5 m-4">
+    <div className="flex flex-col gap-5 m-4 pt-28 sm:pt-36">
       {/* Barra de filtro e botão de voltar */}
 
       <h1 className="text-3xl md:text-5xl font-bold text-black tracking-wide">
