@@ -8,10 +8,8 @@ export default function Home() {
     <div>
       {/* Landing page */}
       <div className="bg-linear-to-b from-green-300/90 from-30% via-green-300/70 via-40% to-transparent">
-        <div className="fixed w-full z-10">
-          <Header selected="inicio"></Header>
-        </div>
-        <div className="min-h-screen text-center flex flex-col justify-center items-center gap-6 lg:gap-12 pt-20 px-4 bg-laje bg-no-repeat bg-bottom bg-contain lg:bg-fixed">
+        <Header selected="inicio" />
+        <div className="min-h-screen text-center flex flex-col justify-center items-center gap-6 lg:gap-12 pt-28 lg:pt-20 px-4 bg-laje bg-no-repeat bg-bottom bg-contain lg:bg-fixed">
           <div className="flex flex-col items-center text-center text-4xl font-sans">
             <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium mb-2">
               Bem-Vindo à
