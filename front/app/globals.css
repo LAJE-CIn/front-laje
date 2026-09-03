@@ -99,11 +99,12 @@ body {
 
   .bg-laje {
     background-image: url('/assets/backgrounds/laje_pessoas_01.png');
-    background-size: contain;
-    background-position: bottom center;
+    background-size: 100% 100%;
+    background-position: center bottom;
     background-repeat: no-repeat;
+    background-attachment: scroll;
     width: 100%;
-    aspect-ratio: 8001 / 4501;
+    height: 100%;
   }
 }
 

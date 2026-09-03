@@ -6,11 +6,9 @@ import laje from './icon.png';
 export default function NotFound() {
   return (
     <div className="min-h-screen flex flex-col justify-between">
-      <div className="fixed w-full z-10">
-        <Header selected="inicio" />
-      </div>
+      <Header selected="inicio" />
 
-      <div className="flex-1 flex flex-col justify-center items-center px-4 py-28 text-center">
+      <div className="flex-1 flex flex-col justify-center items-center px-4 pt-32 sm:pt-36 pb-16 text-center">
         <div className="max-w-2xl w-full bg-gray-900/90 border-4 border-green-500 rounded-2xl p-8 md:p-12 shadow-[0_0_30px_rgba(34,197,94,0.3)] flex flex-col items-center gap-6">
           <div className="flex justify-center">
             <Image
