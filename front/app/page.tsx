@@ -113,8 +113,8 @@ export default function Home() {
                 </span>
               </li>
             </ul>
-            <div className="mt-2 flex justify-start">
-              <BotãoGamer href="#" texto="RESTART"></BotãoGamer>
+            <div className="mt-2 flex justify-center sm:justify-start">
+              <BotãoGamer href="#site" texto="CONTINUE"></BotãoGamer>
             </div>
           </div>
           <div className="flex justify-center lg:justify-end">

@@ -120,10 +120,13 @@ export default function PaginaFeed({
     <div className="flex flex-col gap-5 m-4 pt-28 sm:pt-36">
       {/* Barra de filtro e botão de voltar */}
 
-      <h1 className="text-3xl md:text-5xl font-bold text-black tracking-wide">
-        {nome}
-      </h1>
-      <div className="flex flex-col gap-2 md:flex-row md:justify-between md:items-center">
+      <div className="flex justify-between items-center">
+        <h1 className="text-3xl md:text-5xl font-bold text-black tracking-wide">
+          {nome}
+        </h1>
+        <BotãoVoltar path={'/repositorio'} />
+      </div>
+      <div className="flex flex-col gap-4 md:flex-row md:flex-wrap md:justify-between md:items-center w-full">
         <FilterBox
           texto={pesquisa}
           tipos={tipos}
@@ -142,8 +145,6 @@ export default function PaginaFeed({
             * busca ativada
           </p>
         )}
-
-        <BotãoVoltar path={'/repositorio'} />
       </div>
 
       {/* Container de jogos/eventos separados por categoria */}

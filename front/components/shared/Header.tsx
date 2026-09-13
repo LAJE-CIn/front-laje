@@ -61,9 +61,9 @@ export default function Header({ selected }: HeaderProps) {
         aria-label="Navegação principal"
       >
         {/* ========================================================= */}
-        {/* VERSÃO DESKTOP (>= lg): Atalhos laterais e trapézio central */}
+        {/* VERSÃO DESKTOP E TABLET (>= lg): Atalhos laterais e trapézio central */}
         {/* ========================================================= */}
-        <div className="hidden lg:flex justify-between items-start text-center max-w-7xl mx-auto w-full">
+        <div className="hidden lg:flex md:flex justify-between items-start text-center max-w-7xl mx-auto w-full">
           {/* Parte Esquerda */}
           <div className="flex-1 flex justify-around h-14 relative z-0 items-center clip-lateral-esq -mr-11 bg-gray-900 px-4">
             <Link href={'/'} className={getDesktopLinkStyle('inicio')}>
@@ -109,10 +109,10 @@ export default function Header({ selected }: HeaderProps) {
         </div>
 
         {/* ========================================================= */}
-        {/* VERSÃO MOBILE E TABLET (< lg): Logo grande centralizada   */}
+        {/* VERSÃO MOBILE (< md): Logo grande centralizada   */}
         {/* e botão de abrir o menu de navegação                      */}
         {/* ========================================================= */}
-        <div className="flex lg:hidden justify-center items-center relative w-full max-w-7xl mx-auto px-2">
+        <div className="flex lg:hidden md:hidden justify-center items-center relative w-full max-w-7xl mx-auto px-2">
           {/* Logo LAJE com tamanho grande preservado */}
           <Link
             href="/"
