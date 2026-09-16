@@ -63,7 +63,7 @@ export default function PaginaJogo({ jogo, basePath }: PaginaJogoProps) {
             </h2>
 
             {jogo.authors && jogo.authors.length > 0 && (
-              <p className="w-80 max-w-lg text-justify leading-relaxed wrap-break-word">
+              <p className="max-w-sm text-justify leading-relaxed wrap-break-word">
                 <span className="font-semibold">Autores:</span>{' '}
                 {jogo.authors.join(', ')}
               </p>

@@ -21,6 +21,7 @@ export default defineConfig({
         nome: s.string().max(99),
         imagem: s.string(),
         dataPublicacao: s.isodate(),
+        dataFim: s.isodate().optional(), // momento opcional para evitar bugs de mock
         tipo: s.enum(['GameJams', 'Jogos de IP', 'Outros']),
         body: s.mdx()
       })
