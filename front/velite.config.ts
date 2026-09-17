@@ -20,6 +20,7 @@ export default defineConfig({
         slug: s.string(),
         nome: s.string().max(99),
         imagem: s.string(),
+        jogos: s.array(s.any()).default([]),
         dataPublicacao: s.isodate(),
         dataFim: s.isodate().optional(), // momento opcional para evitar bugs de mock
         tipo: s.enum(['GameJams', 'Jogos de IP', 'Outros']),

@@ -18,7 +18,7 @@ export async function getEventos(): Promise<Evento[]> {
 
 export async function getEvento(
   slug: string
-): Promise<(Evento & { jogos: Jogo[] }) | undefined> {
+): Promise<(Omit<Evento, 'jogos'> & { jogos: Jogo[] }) | undefined> {
   const evento = eventos.find((evento) => evento.slug === slug);
   if (!evento) {
     return undefined;
