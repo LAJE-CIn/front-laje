@@ -9,7 +9,6 @@ import type { Jogo } from '#site/content';
 
 interface PaginaJogoProps {
   jogo: Jogo;
-  basePath: string;
 }
 
 const mdxComponents = {
@@ -27,14 +26,14 @@ const mdxComponents = {
   )
 };
 
-export default function PaginaJogo({ jogo, basePath }: PaginaJogoProps) {
+export default function PaginaJogo({ jogo }: PaginaJogoProps) {
   return (
     <div className="flex flex-col gap-5 m-4 pt-28 sm:pt-36">
       {/* Breadcrumb e botão de voltar */}
 
       <div className="flex justify-between items-center">
         <p className="text-2xl font-bold text-black tracking-wide">Jogos</p>
-        <BotãoVoltar path={basePath} />
+        <BotãoVoltar />
       </div>
 
       {/* Título do jogo */}

@@ -3,13 +3,12 @@
 // Importações
 
 import type { Evento } from '#site/content';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { MDXContent } from '../shared/mdx-content';
 import BotãoVoltar from '../ui/BotãoVoltar';
 import Image from 'next/image';
 import Select from 'react-select';
 import { SingleValue } from 'react-select';
-import ContentContainer from '../shared/ContentContainer';
 import ContentCard from '../ui/ContentCard';
 
 // Tipo para opções do react-select
@@ -21,7 +20,6 @@ type Option = {
 
 interface PáginaColecaoProps {
   colecao: Evento;
-  basePath: string;
 }
 
 const mdxComponents = {
@@ -47,10 +45,7 @@ const opções: Option[] = [
   { value: 'Nome - Z a A', label: 'Nome - Z a A' }
 ];
 
-export default function PáginaColecao({
-  colecao,
-  basePath
-}: PáginaColecaoProps) {
+export default function PáginaColecao({ colecao }: PáginaColecaoProps) {
   // Pegar os jogos relacioandos
 
   const [currentOpção, setCurrentOpção] = useState(opções[0]);
@@ -67,7 +62,14 @@ export default function PáginaColecao({
       return b.nome.localeCompare(a.nome);
     }
     if (currentOpção.value === 'Relevância') {
-      return 0;
+      return (
+        b.eventos.find(
+          (e: { slug: string; relevancia: number }) => e.slug === colecao.slug
+        )?.relevancia -
+        a.eventos.find(
+          (e: { slug: string; relevancia: number }) => e.slug === colecao.slug
+        )?.relevancia
+      );
     }
   });
 
@@ -77,7 +79,7 @@ export default function PáginaColecao({
 
       <div className="flex justify-between items-center">
         <p className="text-2xl font-bold text-black tracking-wide">Coleções</p>
-        <BotãoVoltar path={basePath} />
+        <BotãoVoltar />
       </div>
 
       {/* Título da coleção */}
@@ -147,7 +149,7 @@ export default function PáginaColecao({
               slug={jogo.slug}
               cover={jogo.imagem}
               nome={jogo.nome}
-              basePath={basePath}
+              basePath={'../jogos'}
             />
           ))}
         </div>

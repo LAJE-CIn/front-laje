@@ -23,7 +23,7 @@ export default async function EventoPage({
   return (
     <>
       <Header selected="repositorio" />
-      <PaginaColecao colecao={colecao} basePath="/repositorio/colecoes" />
+      <PaginaColecao colecao={colecao} />
     </>
   );
 }

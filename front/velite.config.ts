@@ -35,7 +35,14 @@ export default defineConfig({
         nome: s.string().trim().max(99),
         imagem: s.string(),
         dataPublicacao: s.isodate(),
-        eventos: s.array(s.string()).default([]),
+        eventos: s
+          .array(
+            s.object({
+              slug: s.string(),
+              relevancia: s.number().min(0)
+            })
+          )
+          .default([]),
         tipo: s.string().trim().toLowerCase(),
         body: s.mdx(),
         engine: s.string().trim().toLowerCase().optional(),
