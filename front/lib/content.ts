@@ -18,7 +18,7 @@ export async function getEventos(): Promise<Evento[]> {
 
 export async function getEvento(
   slug: string
-): Promise<(Evento & { jogos: Jogo[] }) | undefined> {
+): Promise<(Omit<Evento, 'jogos'> & { jogos: Jogo[] }) | undefined> {
   const evento = eventos.find((evento) => evento.slug === slug);
   if (!evento) {
     return undefined;
@@ -26,7 +26,9 @@ export async function getEvento(
 
   return {
     ...evento,
-    jogos: (await getJogos()).filter((jogo) => jogo.eventos.includes(slug))
+    jogos: (await getJogos()).filter((jogo) =>
+      jogo.eventos.some((e) => e.slug === slug)
+    )
   };
 }
 
@@ -45,7 +47,7 @@ export async function getJogo(
     ...jogo,
     eventosData: incluirEventos
       ? (await getEventos()).filter((evento) =>
-          jogo.eventos.includes(evento.slug)
+          jogo.eventos.some((e) => e.slug === evento.slug)
         )
       : undefined
   };

@@ -20,7 +20,9 @@ export default defineConfig({
         slug: s.string(),
         nome: s.string().max(99),
         imagem: s.string(),
+        jogos: s.array(s.any()).default([]),
         dataPublicacao: s.isodate(),
+        dataFim: s.isodate().optional(), // momento opcional para evitar bugs de mock
         tipo: s.enum(['GameJams', 'Jogos de IP', 'Outros']),
         body: s.mdx()
       })
@@ -33,7 +35,14 @@ export default defineConfig({
         nome: s.string().trim().max(99),
         imagem: s.string(),
         dataPublicacao: s.isodate(),
-        eventos: s.array(s.string()).default([]),
+        eventos: s
+          .array(
+            s.object({
+              slug: s.string(),
+              relevancia: s.number().min(0)
+            })
+          )
+          .default([]),
         tipo: s.string().trim().toLowerCase(),
         body: s.mdx(),
         engine: s.string().trim().toLowerCase().optional(),

@@ -9,7 +9,6 @@ import type { Jogo } from '#site/content';
 
 interface PaginaJogoProps {
   jogo: Jogo;
-  basePath: string;
 }
 
 const mdxComponents = {
@@ -27,14 +26,14 @@ const mdxComponents = {
   )
 };
 
-export default function PaginaJogo({ jogo, basePath }: PaginaJogoProps) {
+export default function PaginaJogo({ jogo }: PaginaJogoProps) {
   return (
-    <div className="flex flex-col gap-5 m-4">
+    <div className="flex flex-col gap-5 m-4 pt-28 sm:pt-36">
       {/* Breadcrumb e botão de voltar */}
 
       <div className="flex justify-between items-center">
         <p className="text-2xl font-bold text-black tracking-wide">Jogos</p>
-        <BotãoVoltar path={basePath} />
+        <BotãoVoltar />
       </div>
 
       {/* Título do jogo */}
@@ -57,11 +56,27 @@ export default function PaginaJogo({ jogo, basePath }: PaginaJogoProps) {
             className="w-full md:w-80 h-52 object-cover border-2 border-black rounded-xs shrink-0"
           />
 
-          <div className="flex flex-col gap-1 text-black font-medium text-xl">
-            <h2 className="text-xl md:text-3xl">Detalhes do projeto:</h2>
-            {jogo.authors && <p>Autores: {jogo.authors.join(', ')}</p>}
-            <p>Gênero: {jogo.tipo}</p>
-            {jogo.engine && <p>Engine: {jogo.engine}</p>}
+          <div className="flex flex-col gap-2 text-black font-medium text-lg md:text-xl">
+            <h2 className="text-xl md:text-3xl font-bold mb-1">
+              Detalhes do projeto:
+            </h2>
+
+            {jogo.authors && jogo.authors.length > 0 && (
+              <p className="max-w-sm text-justify leading-relaxed wrap-break-word">
+                <span className="font-semibold">Autores:</span>{' '}
+                {jogo.authors.join(', ')}
+              </p>
+            )}
+
+            <p className="w-full wrap-break-word">
+              <span className="font-semibold">Gênero:</span> {jogo.tipo}
+            </p>
+
+            {jogo.engine && (
+              <p className="w-full wrap-break-word">
+                <span className="font-semibold">Engine:</span> {jogo.engine}
+              </p>
+            )}
           </div>
         </div>
 
@@ -78,7 +93,7 @@ export default function PaginaJogo({ jogo, basePath }: PaginaJogoProps) {
           {jogo.link && (
             <iframe
               src="https://itch.io/embed/3064138"
-              className="max-w-138 h-42 w-full"
+              className="max-w-250 h-42 w-full"
             ></iframe>
           )}
         </div>

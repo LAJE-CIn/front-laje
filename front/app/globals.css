@@ -72,6 +72,28 @@ body {
     -webkit-mask-position: center;
     -webkit-mask-repeat: no-repeat;
   }
+
+  .bg-laje {
+    background-image: url('/assets/backgrounds/laje_pessoas_01.png');
+  }
+
+  .bg-laje-2 {
+    background-image: url('/assets/backgrounds/laje_pessoas_02.png');
+  }
+
+  .bg-laje,
+  .bg-laje-2 {
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: contain;
+  }
+
+  @media (min-aspect-ratio: 16/9), (min-width: 1024px) {
+    .bg-laje,
+    .bg-laje-2 {
+      background-size: cover;
+    }
+  }
 }
 
 .custom-swiper-button {
@@ -95,26 +117,6 @@ body {
       0 calc(100% - 15px),
       0 15px
     );
-  }
-
-  .bg-laje {
-    background-image: url('/assets/backgrounds/laje_pessoas_01.png');
-    background-size: contain;
-    background-position: bottom center;
-    background-repeat: no-repeat;
-  }
-
-  @media (min-width: 768px) {
-    .bg-laje {
-      background-size: cover;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .bg-laje {
-      background-size: contain;
-      background-position: bottom;
-    }
   }
 }
 
