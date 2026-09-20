@@ -22,7 +22,7 @@ export default async function JogoPage({
   return (
     <>
       <Header selected="repositorio" />
-      <PaginaJogo jogo={jogo} basePath="/repositorio/jogos" />
+      <PaginaJogo jogo={jogo} />
     </>
   );
 }

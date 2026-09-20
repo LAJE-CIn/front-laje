@@ -9,7 +9,6 @@ import type { Jogo } from '#site/content';
 
 interface PaginaJogoProps {
   jogo: Jogo;
-  basePath: string;
 }
 
 const mdxComponents = {
@@ -27,14 +26,14 @@ const mdxComponents = {
   )
 };
 
-export default function PaginaJogo({ jogo, basePath }: PaginaJogoProps) {
+export default function PaginaJogo({ jogo }: PaginaJogoProps) {
   return (
     <div className="flex flex-col gap-5 m-4 pt-28 sm:pt-36">
       {/* Breadcrumb e botão de voltar */}
 
       <div className="flex justify-between items-center">
         <p className="text-2xl font-bold text-black tracking-wide">Jogos</p>
-        <BotãoVoltar path={basePath} />
+        <BotãoVoltar />
       </div>
 
       {/* Título do jogo */}
@@ -63,7 +62,7 @@ export default function PaginaJogo({ jogo, basePath }: PaginaJogoProps) {
             </h2>
 
             {jogo.authors && jogo.authors.length > 0 && (
-              <p className="w-80 max-w-lg text-justify leading-relaxed wrap-break-word">
+              <p className="max-w-sm text-justify leading-relaxed wrap-break-word">
                 <span className="font-semibold">Autores:</span>{' '}
                 {jogo.authors.join(', ')}
               </p>

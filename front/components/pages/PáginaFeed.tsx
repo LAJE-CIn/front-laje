@@ -124,7 +124,7 @@ export default function PaginaFeed({
         <h1 className="text-3xl md:text-5xl font-bold text-black tracking-wide">
           {nome}
         </h1>
-        <BotãoVoltar path={'/repositorio'} />
+        <BotãoVoltar />
       </div>
       <div className="flex flex-col gap-4 md:flex-row md:flex-wrap md:justify-between md:items-center w-full">
         <FilterBox
