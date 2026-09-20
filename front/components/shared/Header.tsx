@@ -1,7 +1,7 @@
 'use client';
 
 // Importações
-import { useState, useEffect } from 'react';
+import { useState, useEffect, type MouseEvent } from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 
@@ -20,6 +20,11 @@ const navLinks = [
 
 export default function Header({ selected }: HeaderProps) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const handleStartClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   // Fechar barra lateral ao pressionar Escape e travar rolagem do body quando aberta
   useEffect(() => {
@@ -57,7 +62,7 @@ export default function Header({ selected }: HeaderProps) {
   return (
     <>
       <nav
-        className="fixed top-0 left-0 w-full z-40 bg-linear-to-b from-green-300/90 from-50% via-green-300/70 via-80% to-transparent text-green-300 p-3 lg:p-5"
+        className="fixed top-0 left-0 z-40 w-full bg-linear-to-b from-green-300/90 from-50% via-green-300/70 via-80% to-transparent px-3 py-0 text-green-300 md:relative md:p-5"
         aria-label="Navegação principal"
       >
         {/* ========================================================= */}
@@ -81,7 +86,8 @@ export default function Header({ selected }: HeaderProps) {
           <div className="shrink-0 flex flex-col items-center relative z-10">
             <Link
               href="/"
-              className="w-72 xl:w-96 h-20 clip-trapezio bg-linear-to-b bg-gray-900 flex justify-center items-center group transition-transform hover:scale-105 active:scale-95"
+              onClick={handleStartClick}
+              className="w-72 xl:w-96 h-20 clip-trapezio bg-linear-to-b bg-gray-900 flex flex-col justify-center items-center group transition-transform hover:scale-105 active:scale-95"
               aria-label="Página inicial LAJE"
             >
               <div
@@ -113,10 +119,11 @@ export default function Header({ selected }: HeaderProps) {
         {/* e botão de abrir o menu de navegação                      */}
         {/* ========================================================= */}
         <div className="flex lg:hidden md:hidden justify-center items-center relative w-full max-w-7xl mx-auto px-2">
-          {/* Logo LAJE com tamanho grande preservado */}
+          {/* A logo fica menor em telas estreitas para não competir com o botão do menu. */}
           <Link
             href="/"
-            className="w-60 sm:w-72 md:w-80 h-20 clip-trapezio bg-linear-to-b bg-gray-900 flex justify-center items-center group transition-transform hover:scale-105 active:scale-95 shadow-lg shadow-black/50"
+            onClick={handleStartClick}
+            className="w-48 sm:w-60 md:w-80 h-20 clip-trapezio bg-linear-to-b bg-gray-900 flex flex-col justify-center items-center group transition-transform hover:scale-105 active:scale-95 shadow-lg shadow-black/50"
             aria-label="Página inicial LAJE"
           >
             <div
@@ -132,9 +139,10 @@ export default function Header({ selected }: HeaderProps) {
           <button
             type="button"
             onClick={() => setIsSidebarOpen(true)}
-            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2.5 bg-gray-900 hover:bg-gray-800 border-2 border-green-500/70 hover:border-green-400 text-green-300 hover:text-green-200 rounded-xl shadow-[0_0_15px_rgba(34,197,94,0.3)] hover:shadow-[0_0_25px_rgba(34,197,94,0.5)] transition-all duration-200 cursor-pointer active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-400"
+            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center bg-black text-green-300 clip-botao transition-all duration-200 ease-in-out hover:scale-105 hover:cursor-pointer active:scale-95 focus:outline-none focus:ring-2 focus:ring-green-400 sm:h-auto sm:w-auto sm:gap-2 sm:px-4 sm:py-2.5"
             aria-label="Abrir menu de navegação"
             aria-expanded={isSidebarOpen}
+            aria-controls="mobile-navigation"
           >
             <Menu className="w-6 h-6 text-green-400" />
             <span className="hidden sm:inline font-mono text-xs font-bold tracking-widest uppercase">
@@ -160,6 +168,7 @@ export default function Header({ selected }: HeaderProps) {
 
       {/* Painel do Menu Lateral */}
       <div
+        id="mobile-navigation"
         className={`fixed top-0 left-0 h-full w-[75vw] sm:w-[50vw] bg-gray-900 border-r-2 border-green-500/30 z-50 transform transition-transform duration-300 ease-in-out lg:hidden flex flex-col shadow-2xl ${
           isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
