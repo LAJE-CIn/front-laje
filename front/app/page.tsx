@@ -9,12 +9,12 @@ export default function Home() {
       {/* Landing page */}
       <div className="w-full bg-linear-to-b from-green-300/90 from-30% via-green-300/70 via-40% to-transparent">
         <Header selected="inicio" />
-        <div className="min-h-screen w-full text-center flex flex-col justify-center items-center gap-6 lg:gap-12 pt-28 sm:pt-32 lg:pt-36 px-4 bg-laje bg-no-repeat bg-bottom bg-contain lg:bg-cover [@media(min-aspect-ratio:16/9)]:bg-cover lg:bg-fixed">
+        <div className="min-h-screen w-full text-center flex flex-col justify-center items-center gap-6 lg:gap-12 px-4 bg-laje bg-no-repeat bg-bottom bg-contain lg:bg-cover [@media(min-aspect-ratio:16/9)]:bg-cover lg:bg-fixed">
           <div className="flex flex-col items-center text-center text-4xl font-sans">
-            <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-medium mb-2">
+            <h3 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-medium mb-2">
               Bem-Vindo à
             </h3>
-            <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight max-w-4xl">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight max-w-4xl">
               Liga Acadêmica
               <br />
               de Jogos Eletrônicos

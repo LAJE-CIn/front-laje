@@ -1,7 +1,7 @@
 'use client';
 
 // Importações
-import { useState, useEffect } from 'react';
+import { useState, useEffect, type MouseEvent } from 'react';
 import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 
@@ -20,6 +20,11 @@ const navLinks = [
 
 export default function Header({ selected }: HeaderProps) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const handleStartClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   // Fechar barra lateral ao pressionar Escape e travar rolagem do body quando aberta
   useEffect(() => {
@@ -57,7 +62,7 @@ export default function Header({ selected }: HeaderProps) {
   return (
     <>
       <nav
-        className="fixed top-0 left-0 w-full z-40 bg-linear-to-b from-green-300/90 from-50% via-green-300/70 via-80% to-transparent text-green-300 p-3 lg:p-5"
+        className="fixed top-0 left-0 z-40 w-full bg-linear-to-b from-green-300/90 from-50% via-green-300/70 via-80% to-transparent px-3 py-0 text-green-300 md:relative md:p-5"
         aria-label="Navegação principal"
       >
         {/* ========================================================= */}
@@ -81,7 +86,8 @@ export default function Header({ selected }: HeaderProps) {
           <div className="shrink-0 flex flex-col items-center relative z-10">
             <Link
               href="/"
-              className="w-72 xl:w-96 h-20 clip-trapezio bg-linear-to-b bg-gray-900 flex justify-center items-center group transition-transform hover:scale-105 active:scale-95"
+              onClick={handleStartClick}
+              className="w-72 xl:w-96 h-20 clip-trapezio bg-linear-to-b bg-gray-900 flex flex-col justify-center items-center group transition-transform hover:scale-105 active:scale-95"
               aria-label="Página inicial LAJE"
             >
               <div
@@ -113,10 +119,11 @@ export default function Header({ selected }: HeaderProps) {
         {/* e botão de abrir o menu de navegação                      */}
         {/* ========================================================= */}
         <div className="flex lg:hidden md:hidden justify-center items-center relative w-full max-w-7xl mx-auto px-2">
-          {/* Logo LAJE com tamanho grande preservado */}
+          {/* A logo fica menor em telas estreitas para não competir com o botão do menu. */}
           <Link
             href="/"
-            className="w-60 sm:w-72 md:w-80 h-20 clip-trapezio bg-linear-to-b bg-gray-900 flex justify-center items-center group transition-transform hover:scale-105 active:scale-95 shadow-lg shadow-black/50"
+            onClick={handleStartClick}
+            className="w-48 sm:w-60 md:w-80 h-20 clip-trapezio bg-linear-to-b bg-gray-900 flex flex-col justify-center items-center group transition-transform hover:scale-105 active:scale-95 shadow-lg shadow-black/50"
             aria-label="Página inicial LAJE"
           >
             <div
@@ -132,9 +139,10 @@ export default function Header({ selected }: HeaderProps) {
           <button
             type="button"
             onClick={() => setIsSidebarOpen(true)}
-            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2.5 bg-gray-900/95 hover:bg-gray-800 border-2 border-green-500/70 hover:border-green-400 text-green-300 hover:text-green-200 rounded-xl shadow-[0_0_15px_rgba(34,197,94,0.3)] hover:shadow-[0_0_25px_rgba(34,197,94,0.5)] transition-all duration-200 cursor-pointer active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-400"
+            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center bg-black text-green-300 clip-botao transition-all duration-200 ease-in-out hover:scale-105 hover:cursor-pointer active:scale-95 focus:outline-none focus:ring-2 focus:ring-green-400 sm:h-auto sm:w-auto sm:gap-2 sm:px-4 sm:py-2.5"
             aria-label="Abrir menu de navegação"
             aria-expanded={isSidebarOpen}
+            aria-controls="mobile-navigation"
           >
             <Menu className="w-6 h-6 text-green-400" />
             <span className="hidden sm:inline font-mono text-xs font-bold tracking-widest uppercase">
@@ -147,110 +155,65 @@ export default function Header({ selected }: HeaderProps) {
       {/* ========================================================= */}
       {/* TELA DE NAVEGAÇÃO (FULLSCREEN): Tela completa para mobile  */}
       {/* ========================================================= */}
-      <div
-        className={`fixed inset-0 z-50 lg:hidden flex flex-col justify-between bg-gray-950/98 backdrop-blur-2xl p-6 sm:p-10 overflow-y-auto transition-all duration-300 ease-out ${
-          isSidebarOpen
-            ? 'opacity-100 scale-100 pointer-events-auto'
-            : 'opacity-0 scale-95 pointer-events-none'
-        }`}
-        aria-label="Tela de navegação principal"
-        role="dialog"
-        aria-modal="true"
-      >
-        {/* Topo da Tela: Identidade LAJE e Botão Fechar */}
-        <div className="flex items-center justify-between pb-6 border-b border-gray-800/80 max-w-2xl mx-auto w-full">
-          <Link
-            href="/"
-            onClick={() => setIsSidebarOpen(false)}
-            className="flex items-center gap-3.5 group"
-          >
-            <div className="w-12 h-12 bg-gray-900 border-2 border-green-500/60 rounded-xl flex items-center justify-center shadow-[0_0_20px_rgba(34,197,94,0.3)] group-hover:border-green-400 transition-colors">
-              <div
-                className="w-8 h-8 bg-green-400 mask-centro"
-                style={{
-                  maskImage: `url('/icon.png')`,
-                  WebkitMaskImage: `url('/icon.png')`
-                }}
-              />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-2xl font-black text-white tracking-widest group-hover:text-green-300 transition-colors font-sans">
-                LAJE
-              </span>
-              <span className="text-[10px] font-mono text-green-400 tracking-widest uppercase">
-                [ NAVEGAÇÃO DO SISTEMA ]
-              </span>
-            </div>
-          </Link>
 
+      <div
+        className={`fixed inset-0 bg-black/60 z-40 transition-opacity duration-300 lg:hidden ${
+          isSidebarOpen
+            ? 'opacity-100 visible'
+            : 'opacity-0 invisible pointer-events-none'
+        }`}
+        onClick={() => setIsSidebarOpen(false)}
+        aria-hidden="true"
+      />
+
+      {/* Painel do Menu Lateral */}
+      <div
+        id="mobile-navigation"
+        className={`fixed top-0 left-0 h-full w-[75vw] sm:w-[50vw] bg-gray-900 border-r-2 border-green-500/30 z-50 transform transition-transform duration-300 ease-in-out lg:hidden flex flex-col shadow-2xl ${
+          isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+        }`}
+      >
+        {/* Cabeçalho do menu lateral */}
+        <div className="flex justify-between items-center p-5 border-b border-green-500/20">
+          <div
+            className="w-10 h-10 bg-green-300"
+            style={{
+              maskImage: `url('/icon.png')`,
+              WebkitMaskImage: `url('/icon.png')`,
+              maskSize: 'contain',
+              maskRepeat: 'no-repeat'
+            }}
+          />
           <button
-            type="button"
             onClick={() => setIsSidebarOpen(false)}
-            className="flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2.5 rounded-xl bg-gray-900/90 border border-gray-700 text-gray-300 hover:text-green-300 hover:border-green-400 flex items-center justify-center transition-all focus:outline-none focus:ring-2 focus:ring-green-400 cursor-pointer shadow-lg active:scale-95"
-            aria-label="Fechar tela de navegação"
+            className="text-green-300 hover:text-green-400 p-2 focus:outline-none focus:ring-2 focus:ring-green-400 rounded-lg transition-colors"
+            aria-label="Fechar menu"
           >
-            <span className="text-xs font-mono text-gray-400 uppercase tracking-wider hidden sm:inline">
-              FECHAR
-            </span>
-            <X className="w-6 h-6 text-green-400" />
+            <X className="w-8 h-8" />
           </button>
         </div>
 
-        {/* Centro da Tela: Links de Navegação em Destaque */}
-        <div className="flex-1 flex flex-col justify-center max-w-2xl mx-auto w-full py-8 sm:py-12">
-          <span className="text-xs font-mono text-gray-500 uppercase tracking-widest mb-4 px-2">
-            // SELECIONE O DESTINO
-          </span>
+        {/* Links de navegação */}
+        <div className="flex flex-col p-4 gap-3 mt-4">
+          {navLinks.map((link) => {
+            const isActive = selected === link.id;
 
-          <nav className="flex flex-col gap-3 sm:gap-4">
-            {navLinks.map((item, index) => {
-              const isActive = selected === item.id;
-              const indexStr = String(index + 1).padStart(2, '0');
-              return (
-                <Link
-                  key={item.id}
-                  href={item.href}
-                  onClick={() => setIsSidebarOpen(false)}
-                  className={`group flex items-center justify-between px-5 sm:px-6 py-4 sm:py-5 rounded-2xl font-black tracking-wider transition-all duration-200 border-2 ${
-                    isActive
-                      ? 'bg-green-500/15 border-green-500 text-green-300 shadow-[0_0_30px_rgba(34,197,94,0.25)] translate-x-1'
-                      : 'bg-gray-900/60 border-gray-800 text-gray-300 hover:bg-gray-900 hover:border-green-500/50 hover:text-green-300 hover:translate-x-2'
-                  }`}
-                >
-                  <div className="flex items-center gap-4 sm:gap-6">
-                    <span
-                      className={`font-mono text-sm sm:text-base ${
-                        isActive
-                          ? 'text-green-400 font-bold'
-                          : 'text-gray-500 group-hover:text-green-400'
-                      }`}
-                    >
-                      {indexStr}
-                    </span>
-                    <span className="text-xl sm:text-2xl lg:text-3xl uppercase">
-                      {item.label}
-                    </span>
-                  </div>
-
-                  <span
-                    className={`font-mono text-lg sm:text-xl transition-transform duration-200 ${
-                      isActive
-                        ? 'text-green-400 translate-x-1'
-                        : 'text-gray-600 group-hover:text-green-400 group-hover:translate-x-2'
-                    }`}
-                  >
-                    {'>'}
-                  </span>
-                </Link>
-              );
-            })}
-          </nav>
-        </div>
-
-        {/* Rodapé da Tela de Navegação */}
-        <div className="pt-6 border-t border-gray-800/80 max-w-2xl mx-auto w-full text-center flex flex-col sm:flex-row justify-between items-center gap-2 text-[11px] font-mono text-gray-500 tracking-wider uppercase">
-          <span>LIGA ACADÊMICA DE JOGOS ELETRÔNICOS</span>
-          <span className="text-green-400/80">● ONLINE</span>
+            return (
+              <Link
+                key={link.id}
+                href={link.href}
+                onClick={() => setIsSidebarOpen(false)}
+                className={`flex items-center px-4 py-3 rounded-xl text-lg font-bold tracking-wide transition-all duration-200 ${
+                  isActive
+                    ? 'bg-green-500/20 text-green-300 border border-green-500/30 shadow-[0_0_15px_rgba(34,197,94,0.1)]'
+                    : 'text-green-200/80 hover:bg-gray-800 hover:text-green-300 border border-transparent'
+                }`}
+              >
+                <span className="mr-3 text-green-500/60 font-mono">{'>'}</span>
+                {link.label}
+              </Link>
+            );
+          })}
         </div>
       </div>
     </>

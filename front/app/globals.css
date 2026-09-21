@@ -1,68 +1,68 @@
 @import 'tailwindcss';
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --swiper-navigation-color: black;
-  --swiper-navigation-size: 64px;
-  --swiper-pagination-color: #000;
+    --background: #ffffff;
+    --foreground: #171717;
+    --swiper-navigation-color: black;
+    --swiper-navigation-size: 64px;
+    --swiper-pagination-color: #000;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --font-sans: var(--font-geist-sans);
+    --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: white) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+    :root {
+        --background: #0a0a0a;
+        --foreground: #ededed;
+    }
 }
 
 body {
-  background-color: rgb(255, 255, 255);
-  background-size: 30px 30px; /* Size of each grid cell */
-  background-image:
-    linear-gradient(to right, rgba(0, 0, 0, 0.1) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
-  color: var(--foreground);
-  font-family: 'Pixelify Sans', Arial, Helvetica, sans-serif;
+    background-color: rgb(255, 255, 255);
+    background-size: 30px 30px; /* Size of each grid cell */
+    background-image:
+        linear-gradient(to right, rgba(0, 0, 0, 0.1) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+    color: var(--foreground);
+    font-family: 'Pixelify Sans', Arial, Helvetica, sans-serif;
 }
 
 .custom-swiper {
-  .swiper-pagination {
-    position: relative !important;
-  }
+    .swiper-pagination {
+        position: relative !important;
+    }
 }
 
 @layer utilities {
-  .clip-trapezio {
-    clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
-  }
-  .clip-lateral-esq {
-    clip-path: polygon(
-      20px 0,
-      100% 0,
-      100% 100%,
-      20px 100%,
-      0 calc(100% - 20px),
-      0 20px
-    );
-  }
+    .clip-trapezio {
+        clip-path: polygon(0 0, 100% 0, 85% 100%, 15% 100%);
+    }
+    .clip-lateral-esq {
+        clip-path: polygon(
+            20px 0,
+            100% 0,
+            100% 100%,
+            20px 100%,
+            0 calc(100% - 20px),
+            0 20px
+        );
+    }
 
-  .clip-lateral-dir {
-    clip-path: polygon(
-      0 0,
-      calc(100% - 20px) 0,
-      100% 20px,
-      100% calc(100% - 20px),
-      calc(100% - 20px) 100%,
-      0 100%
-    );
-  }
+    .clip-lateral-dir {
+        clip-path: polygon(
+            0 0,
+            calc(100% - 20px) 0,
+            100% 20px,
+            100% calc(100% - 20px),
+            calc(100% - 20px) 100%,
+            0 100%
+        );
+    }
 
   .mask-centro {
     mask-size: contain;
@@ -74,7 +74,11 @@ body {
   }
 
   .bg-laje {
+    position: relative;
+    isolation: isolate;
     background-image: url('/assets/backgrounds/laje_pessoas_01.png');
+    width: 100%;
+    height: 100%;
   }
 
   .bg-laje-2 {
@@ -86,6 +90,7 @@ body {
     background-repeat: no-repeat;
     background-position: center bottom;
     background-size: contain;
+    background-attachment: scroll;
   }
 
   @media (min-aspect-ratio: 16/9), (min-width: 1024px) {
@@ -97,12 +102,12 @@ body {
 }
 
 .custom-swiper-button {
-  transition: all 150ms ease-in-out;
-  padding: 8px;
+    transition: all 150ms ease-in-out;
+    padding: 8px;
 }
 
 .custom-swiper-button::after {
-  display: none !important;
+    display: none !important;
 }
 
 @layer theme {
@@ -122,6 +127,6 @@ body {
 
 .custom-swiper-button:hover,
 .custom-swiper-button:active {
-  background: rgba(150, 149, 149, 0.7);
-  border-radius: 50%;
+    background: rgba(150, 149, 149, 0.7);
+    border-radius: 50%;
 }
