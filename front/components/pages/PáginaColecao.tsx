@@ -74,7 +74,7 @@ export default function PáginaColecao({ colecao }: PáginaColecaoProps) {
   });
 
   return (
-    <div className="flex flex-col gap-5 m-4 pt-28 sm:pt-36">
+    <div className="flex flex-col gap-5 m-4 md:px-0 pt-28 md:pt-10">
       {/* Breadcrumb e botão de voltar */}
 
       <div className="flex justify-between items-center">

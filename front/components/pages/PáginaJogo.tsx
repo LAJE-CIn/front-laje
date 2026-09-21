@@ -28,7 +28,7 @@ const mdxComponents = {
 
 export default function PaginaJogo({ jogo }: PaginaJogoProps) {
   return (
-    <div className="flex flex-col gap-5 m-4 pt-28 sm:pt-36">
+    <div className="flex flex-col gap-5 m-4 md:px-0 pt-28 md:pt-10">
       {/* Breadcrumb e botão de voltar */}
 
       <div className="flex justify-between items-center">
@@ -90,9 +90,13 @@ export default function PaginaJogo({ jogo }: PaginaJogoProps) {
 
           <h2 className="text-xl md:text-2xl">Disponível em:</h2>
 
-          {jogo.link && (
+          {jogo.repo === 'itch' && (
+            <iframe src={jogo.link} className="max-w-250 h-42 w-full"></iframe>
+          )}
+
+          {jogo.repo === 'git' && (
             <iframe
-              src="https://itch.io/embed/3064138"
+              src={`https://gh-card.dev/repos/${jogo.link}.svg?link_target=_blank`}
               className="max-w-250 h-42 w-full"
             ></iframe>
           )}
