@@ -111,13 +111,17 @@ export default function PáginaColecao({ colecao }: PáginaColecaoProps) {
               day: '2-digit',
               month: '2-digit',
               year: 'numeric'
-            })}{' '}
-            -{' '}
-            {new Date(colecao.dataFim).toLocaleDateString('pt-BR', {
-              day: '2-digit',
-              month: '2-digit',
-              year: 'numeric'
             })}
+            {colecao.dataFim && (
+              <>
+                {' '}-{' '}
+                {new Date(colecao.dataFim).toLocaleDateString('pt-BR', {
+                  day: '2-digit',
+                  month: '2-digit',
+                  year: 'numeric'
+                })}
+              </>
+            )}
           </h2>
         </div>
 
