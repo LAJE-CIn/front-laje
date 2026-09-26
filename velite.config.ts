@@ -22,7 +22,7 @@ export default defineConfig({
         imagem: s.string(),
         jogos: s.array(s.any()).default([]),
         dataPublicacao: s.isodate(),
-        dataFim: s.isodate().optional(), // momento opcional para evitar bugs de mock
+        dataFim: s.isodate(),
         tipo: s.enum(['GameJams', 'Jogos de IP', 'Outros']),
         body: s.mdx()
       })
@@ -47,8 +47,8 @@ export default defineConfig({
         body: s.mdx(),
         engine: s.string().trim().toLowerCase().optional(),
         authors: s.array(s.string().trim()).default([]),
-        link: s.string().trim().optional(), // no momento opcional, mas é algo obrigatorio
-        repo: s.enum(['git', 'itch']).optional() // obrigatorio, mas no momento opcional, vai falar qual quer mostar (git ou itch)
+        link: s.string().trim(),
+        repo: s.enum(['git', 'itch'])
       })
     }
   },
