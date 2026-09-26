@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Jogo Sinal Verde</title>
+  <desc id="desc">Placeholder visual para o jogo Sinal Verde.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#052e16" />
+      <stop offset="100%" stop-color="#14532d" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <circle cx="920" cy="220" r="180" fill="#86efac" fill-opacity="0.16"/>
+  <text x="80" y="150" font-family="Arial, sans-serif" font-size="72" fill="#ecfdf5" font-weight="700">Sinal Verde</text>
+  <text x="80" y="230" font-family="Arial, sans-serif" font-size="34" fill="#bbf7d0">Puzzle sobre semáforos, fluxo e sincronização</text>
+  <rect x="80" y="510" width="520" height="140" rx="18" fill="#ffffff" fill-opacity="0.1"/>
+  <text x="120" y="585" font-family="Arial, sans-serif" font-size="42" fill="#f0fdf4" font-weight="700">Fluxo em camadas</text>
+</svg>

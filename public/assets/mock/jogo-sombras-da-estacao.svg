@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Jogo Sombras da Estacao</title>
+  <desc id="desc">Placeholder visual para o jogo Sombras da Estacao.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#7c2d12" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <circle cx="250" cy="220" r="150" fill="#fdba74" fill-opacity="0.16"/>
+  <text x="80" y="150" font-family="Arial, sans-serif" font-size="72" fill="#fff7ed" font-weight="700">Sombras da Estacao</text>
+  <text x="80" y="230" font-family="Arial, sans-serif" font-size="34" fill="#ffedd5">Puzzle de luzes, plataformas e reflexos</text>
+  <rect x="80" y="510" width="540" height="140" rx="18" fill="#ffffff" fill-opacity="0.1"/>
+  <text x="120" y="585" font-family="Arial, sans-serif" font-size="42" fill="#fffaf0" font-weight="700">Reflexos ativos</text>
+</svg>

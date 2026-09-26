@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Jogo Mapa Inverso</title>
+  <desc id="desc">Placeholder visual para o jogo Mapa Inverso.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#0369a1" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <circle cx="920" cy="220" r="180" fill="#7dd3fc" fill-opacity="0.16"/>
+  <text x="80" y="150" font-family="Arial, sans-serif" font-size="72" fill="#f0f9ff" font-weight="700">Mapa Inverso</text>
+  <text x="80" y="230" font-family="Arial, sans-serif" font-size="34" fill="#bae6fd">estratégia onde mover o mapa importa mais</text>
+  <rect x="80" y="510" width="540" height="140" rx="18" fill="#ffffff" fill-opacity="0.1"/>
+  <text x="120" y="585" font-family="Arial, sans-serif" font-size="42" fill="#f8fbff" font-weight="700">Tabuleiro mutável</text>
+</svg>
