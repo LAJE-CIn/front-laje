@@ -6,8 +6,8 @@ export default defineConfig({
   root: 'content',
   output: {
     data: '.velite',
-    assets: 'public/assets',
-    base: '/assets/',
+    assets: 'public/generated-assets',
+    base: '/generated-assets/',
     name: '[name]-[hash:6].[ext]',
     clean: true
   },

@@ -37,18 +37,31 @@ export default function Home() {
               Quem somos?
             </h2>
 
-            <p className="text-base sm:text-lg lg:text-2xl font-sans leading-relaxed">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos
-              reprehenderit odit delectus fugit sed, adipisci repudiandae rem
-              dolorum, cupiditate quasi, unde similique dolor. Soluta voluptates
-              adipisci cumque, ea perferendis placeat?
+            <p className="text-base sm:text-lg lg:text-xl font-sans leading-relaxed text-justify">
+              Fundada em novembro de 2025 e oficialmente estabelecida em
+              dezembro do mesmo ano, a LAJE (Liga Acadêmica de Jogos
+              Eletrônicos) conecta artistas de diversos cursos da UFPE a
+              programadores do CIn com um objetivo em comum: desenvolver (e,
+              claro, jogar) jogos eletrônicos.
             </p>
 
-            <p className="text-base sm:text-lg lg:text-xl font-sans leading-relaxed">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem
-              dolores modi voluptatum iure necessitatibus mollitia voluptatibus,
-              commodi suscipit, sunt odio, ut minus doloribus eaque laborum
-              molestiae quam maiores autem placeat.
+            <p className="text-base sm:text-lg lg:text-xl font-sans leading-relaxed text-justify">
+              A liga nasceu de uma percepção clara: muitos estudantes ingressam
+              no CIn e na área de tecnologia movidos pela paixão pelos games que
+              os acompanharam desde a infância. A LAJE surgiu para dar vazão a
+              esse sonho, mostrando aos estudantes que dá para unir a paixão
+              pelos jogos com a construção do seu futuro profissional. É o
+              ambiente perfeito para quem quer colaborar, aprender na prática e
+              construir seus próprios jogos dentro da faculdade.
+            </p>
+
+            <p className="text-base sm:text-lg lg:text-xl font-sans leading-relaxed text-justify">
+              Em menos de um ano de atuação, já reunimos mais de 60 membros na
+              criação de jogos para eventos e na realização de projetos
+              próprios. Seja em iniciativas do Porto Digital ou em eventos
+              patrocinados por marcas, a LAJE se mantém em constante evolução,
+              contando com a orientação dos professores Geber Ramalho e Giordano
+              Cabral.
             </p>
 
             <div className="mt-2 flex justify-center sm:justify-start">
@@ -114,7 +127,7 @@ export default function Home() {
               </li>
             </ul>
             <div className="mt-2 flex justify-center sm:justify-start">
-              <BotãoGamer href="#site" texto="CONTINUE"></BotãoGamer>
+              <BotãoGamer href="#inicio" texto="RESTART"></BotãoGamer>
             </div>
           </div>
           <div className="flex justify-center lg:justify-end">

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Jogo Noite em Camadas</title>
+  <desc id="desc">Placeholder visual para o jogo Noite em Camadas.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#18181b" />
+      <stop offset="100%" stop-color="#7e22ce" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <circle cx="250" cy="220" r="150" fill="#c084fc" fill-opacity="0.16"/>
+  <text x="80" y="150" font-family="Arial, sans-serif" font-size="72" fill="#faf5ff" font-weight="700">Noite em Camadas</text>
+  <text x="80" y="230" font-family="Arial, sans-serif" font-size="34" fill="#e9d5ff">open-world sobre bairros e memórias</text>
+  <rect x="80" y="510" width="540" height="140" rx="18" fill="#ffffff" fill-opacity="0.1"/>
+  <text x="120" y="585" font-family="Arial, sans-serif" font-size="42" fill="#fdf4ff" font-weight="700">Caminhos curtos</text>
+</svg>
