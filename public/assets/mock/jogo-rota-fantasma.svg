@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-labelledby="title desc">
+  <title id="title">Jogo Rota Fantasma</title>
+  <desc id="desc">Placeholder visual para o jogo Rota Fantasma.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#334155" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <path d="M80 620 C220 500, 360 700, 520 590 S840 500, 1080 640" fill="none" stroke="#93c5fd" stroke-width="18" stroke-linecap="round" opacity="0.55"/>
+  <text x="80" y="150" font-family="Arial, sans-serif" font-size="72" fill="#eff6ff" font-weight="700">Rota Fantasma</text>
+  <text x="80" y="230" font-family="Arial, sans-serif" font-size="34" fill="#dbeafe">rythm sobre sinais de luz e travessias</text>
+  <rect x="80" y="510" width="520" height="140" rx="18" fill="#ffffff" fill-opacity="0.1"/>
+  <text x="120" y="585" font-family="Arial, sans-serif" font-size="42" fill="#f8fafc" font-weight="700">Luzes sincronizadas</text>
+</svg>
