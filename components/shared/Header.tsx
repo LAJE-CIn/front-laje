@@ -3,12 +3,13 @@
 // Importações
 import { useState, useEffect, type MouseEvent } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Menu, X } from 'lucide-react';
 
 // Componente Header
 
 interface HeaderProps {
-  selected: 'inicio' | 'noticias' | 'repositorio' | 'artigos';
+  selected?: 'inicio' | 'noticias' | 'repositorio' | 'artigos';
 }
 
 const navLinks = [
@@ -18,12 +19,26 @@ const navLinks = [
   { id: 'repositorio', label: 'Repositório', href: '/repositorio' }
 ] as const;
 
-export default function Header({ selected }: HeaderProps) {
+export default function Header({ selected }: HeaderProps = {}) {
+  const pathname = usePathname();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+  // Determinar automaticamente a aba ativa com base na URL se não for fornecida explicitamente
+  const activeTab =
+    selected ??
+    (() => {
+      if (!pathname) return 'inicio';
+      if (pathname.startsWith('/noticias')) return 'noticias';
+      if (pathname.startsWith('/artigos')) return 'artigos';
+      if (pathname.startsWith('/repositorio')) return 'repositorio';
+      return 'inicio';
+    })();
+
   const handleStartClick = (event: MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (pathname === '/') {
+      event.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   // Fechar barra lateral ao pressionar Escape e travar rolagem do body quando aberta
@@ -48,7 +63,7 @@ export default function Header({ selected }: HeaderProps) {
   }, [isSidebarOpen]);
 
   const getDesktopLinkStyle = (path: string) => {
-    const isActive = selected === path;
+    const isActive = activeTab === path;
     return `
       text-base xl:text-xl font-bold tracking-wide pb-1 border-b-4 transition-all duration-200 ease-in-out whitespace-nowrap
       ${
@@ -196,7 +211,7 @@ export default function Header({ selected }: HeaderProps) {
         {/* Links de navegação */}
         <div className="flex flex-col p-4 gap-3 mt-4">
           {navLinks.map((link) => {
-            const isActive = selected === link.id;
+            const isActive = activeTab === link.id;
 
             return (
               <Link

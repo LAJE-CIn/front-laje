@@ -1,6 +1,6 @@
 // Importações
-import Header from '@/components/shared/Header';
 import ContentContainer from '@/components/shared/ContentContainer';
+import PageContainer from '@/components/shared/PageContainer';
 import BotãoOpção from '@/components/ui/BotãoOpção';
 import { getJogos, getEventosOrdenados } from '@/lib/content';
 import Link from 'next/link';
@@ -23,12 +23,9 @@ export default async function RepositorioPage() {
   };
 
   return (
-    <>
-      <Header selected="repositorio" />
-      <div className="min-h-screen flex flex-col pb-16 sm:mt-0 mt-20 ">
-        <main className="flex-1 flex flex-col max-w-7xl mx-auto w-full px-2 px4 md:px-0 sm:pt-28 md:pt-0">
-          {/* Banner de atalho para as seções principais */}
-          <section className="min-h-[60vh] sm:min-h-[70vh] flex flex-col justify-center">
+    <PageContainer className="flex flex-col gap-10">
+      {/* Banner de atalho para as seções principais */}
+      <section className="min-h-[60vh] sm:min-h-[70vh] flex flex-col justify-center">
             <div className="flex flex-col md:flex-row justify-center items-center gap-6 bg-gray-900/90 border-2 border-green-500 rounded-2xl p-6 sm:p-10 shadow-xl">
               <div className="flex flex-col items-center gap-3 w-full md:w-1/2">
                 <BotãoOpção
@@ -98,8 +95,6 @@ export default async function RepositorioPage() {
               basePath="/repositorio/colecoes"
             />
           </section>
-        </main>
-      </div>
-    </>
+    </PageContainer>
   );
 }

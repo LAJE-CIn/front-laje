@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import laje from './icon.png';
-import Header from '@/components/shared/Header';
 import BotãoGamer from '@/components/ui/BotãoGamer';
 
 export default function Home() {
@@ -8,8 +7,7 @@ export default function Home() {
     <div>
       {/* Landing page */}
       <div className="w-full bg-linear-to-b from-green-300/90 from-30% via-green-300/70 via-40% to-transparent">
-        <Header selected="inicio" />
-        <div className="min-h-screen w-full text-center flex flex-col justify-center items-center gap-6 lg:gap-12 px-4 bg-laje bg-no-repeat bg-bottom bg-contain lg:bg-cover [@media(min-aspect-ratio:16/9)]:bg-cover lg:bg-fixed">
+        <div className="min-h-screen w-full text-center flex flex-col justify-center items-center gap-6 lg:gap-12 px-4 pt-20 md:pt-0 bg-laje bg-no-repeat bg-bottom bg-contain lg:bg-cover [@media(min-aspect-ratio:16/9)]:bg-cover lg:bg-fixed">
           <div className="flex flex-col items-center text-center text-4xl font-sans">
             <h3 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-medium mb-2">
               Bem-Vindo à
