@@ -2,7 +2,6 @@
 
 import { notFound } from 'next/navigation';
 import { getJogo } from '@/lib/content';
-import Header from '@/components/shared/Header';
 import PaginaJogo from '@/components/pages/PáginaJogo';
 
 // Página de detalhe de um jogo
@@ -19,10 +18,5 @@ export default async function JogoPage({
     notFound();
   }
 
-  return (
-    <>
-      <Header selected="repositorio" />
-      <PaginaJogo jogo={jogo} />
-    </>
-  );
+  return <PaginaJogo jogo={jogo} />;
 }

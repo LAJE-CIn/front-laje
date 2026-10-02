@@ -1,5 +1,4 @@
 import PaginaFeed from '@/components/pages/PáginaFeed';
-import Header from '@/components/shared/Header';
 import { getJogos } from '@/lib/content';
 
 // Página de eventos
@@ -10,15 +9,12 @@ export default async function JogosPage() {
   const tiposBusca = ['Nome', 'Engine', 'Autor'];
 
   return (
-    <>
-      <Header selected="repositorio" />
-      <PaginaFeed
-        nome="jogos"
-        posts={content}
-        tipos={tiposBusca}
-        categorias={categorias}
-        basePath="/repositorio/jogos"
-      />
-    </>
+    <PaginaFeed
+      nome="jogos"
+      posts={content}
+      tipos={tiposBusca}
+      categorias={categorias}
+      basePath="/repositorio/jogos"
+    />
   );
 }
