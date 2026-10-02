@@ -33,6 +33,7 @@ export default function Footer() {
     { label: 'Notícias', href: '/noticias' },
     { label: 'Artigos', href: '/artigos' },
     { label: 'Repositório', href: '/repositorio' },
+    { label: 'FAQ', href: '/faq' },
     { label: 'Jogos', href: '/repositorio/jogos' },
     { label: 'Coleções', href: '/repositorio/colecoes' }
   ];

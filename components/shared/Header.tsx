@@ -138,7 +138,7 @@ export default function Header({ selected }: HeaderProps = {}) {
           <Link
             href="/"
             onClick={handleStartClick}
-            className="w-48 sm:w-60 md:w-80 h-20 clip-trapezio bg-linear-to-b bg-gray-900 flex flex-col justify-center items-center group transition-transform hover:scale-105 active:scale-95 shadow-lg shadow-black/50"
+            className="w-48 sm:w-60 md:w-80 h-20 clip-trapezio bg-linear-to-b bg-gray-900 flex flex-col justify-center items-center group transition-transform lg:hover:scale-105 active:opacity-80 lg:active:scale-95 shadow-lg shadow-black/50 touch-manipulation"
             aria-label="Página inicial LAJE"
           >
             <div
@@ -154,7 +154,7 @@ export default function Header({ selected }: HeaderProps = {}) {
           <button
             type="button"
             onClick={() => setIsSidebarOpen(true)}
-            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 flex h-11 w-11 items-center justify-center bg-black text-green-300 clip-botao transition-all duration-200 ease-in-out hover:scale-105 hover:cursor-pointer active:scale-95 focus:outline-none focus:ring-2 focus:ring-green-400 sm:h-auto sm:w-auto sm:gap-2 sm:px-4 sm:py-2.5"
+            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 flex h-12 w-12 items-center justify-center bg-black text-green-300 clip-botao transition-all duration-200 ease-in-out lg:hover:scale-105 hover:cursor-pointer active:opacity-80 lg:active:scale-95 focus:outline-none focus:ring-2 focus:ring-green-400 sm:h-auto sm:w-auto sm:gap-2 sm:px-4 sm:py-2.5 touch-manipulation z-50 [&>*]:pointer-events-none"
             aria-label="Abrir menu de navegação"
             aria-expanded={isSidebarOpen}
             aria-controls="mobile-navigation"
@@ -201,7 +201,7 @@ export default function Header({ selected }: HeaderProps = {}) {
           />
           <button
             onClick={() => setIsSidebarOpen(false)}
-            className="text-green-300 hover:text-green-400 p-2 focus:outline-none focus:ring-2 focus:ring-green-400 rounded-lg transition-colors"
+            className="text-green-300 lg:hover:text-green-400 p-2 focus:outline-none focus:ring-2 focus:ring-green-400 rounded-lg transition-colors touch-manipulation active:opacity-80 [&>*]:pointer-events-none"
             aria-label="Fechar menu"
           >
             <X className="w-8 h-8" />
@@ -218,10 +218,10 @@ export default function Header({ selected }: HeaderProps = {}) {
                 key={link.id}
                 href={link.href}
                 onClick={() => setIsSidebarOpen(false)}
-                className={`flex items-center px-4 py-3 rounded-xl text-lg font-bold tracking-wide transition-all duration-200 ${
+                className={`flex items-center px-4 py-3 rounded-xl text-lg font-bold tracking-wide transition-all duration-200 touch-manipulation active:opacity-80 [&>*]:pointer-events-none ${
                   isActive
                     ? 'bg-green-500/20 text-green-300 border border-green-500/30 shadow-[0_0_15px_rgba(34,197,94,0.1)]'
-                    : 'text-green-200/80 hover:bg-gray-800 hover:text-green-300 border border-transparent'
+                    : 'text-green-200/80 lg:hover:bg-gray-800 lg:hover:text-green-300 border border-transparent'
                 }`}
               >
                 <span className="mr-3 text-green-500/60 font-mono">{'>'}</span>
