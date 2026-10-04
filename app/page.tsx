@@ -1,7 +1,8 @@
-import Image from 'next/image';
-import laje from './icon.png';
-import Header from '@/components/shared/Header';
-import BotãoGamer from '@/components/ui/BotãoGamer';
+import Image from "next/image";
+import laje from "./icon.png";
+import Header from "@/components/shared/Header";
+import BotãoGamer from "@/components/ui/BotãoGamer";
+import Footer from "@/components/shared/Footer";
 
 export default function Home() {
   return (
@@ -91,10 +92,10 @@ export default function Home() {
             <ul className="flex flex-col gap-4 lg:gap-6 text-lg lg:text-xl xl:text-2xl font-sans">
               <li className="flex items-start gap-3">
                 <span className="text-green-500 font-black shrink-0">
-                  {'>'}
+                  {">"}
                 </span>
                 <span>
-                  Últimas notícias da liga{' '}
+                  Últimas notícias da liga{" "}
                   <span className="text-gray-500 text-base lg:text-lg">
                     (em breve!)
                   </span>
@@ -102,13 +103,13 @@ export default function Home() {
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-green-500 font-black shrink-0">
-                  {'>'}
+                  {">"}
                 </span>
                 <span>Todos os jogos e eventos que a LAJE esteve presente</span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-green-500 font-black shrink-0">
-                  {'>'}
+                  {">"}
                 </span>
                 <span>
                   Jogos da disciplina de Introdução à Programação (IP)
@@ -116,10 +117,10 @@ export default function Home() {
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-green-500 font-black shrink-0">
-                  {'>'}
+                  {">"}
                 </span>
                 <span>
-                  Artigos produzidos pela liga{' '}
+                  Artigos produzidos pela liga{" "}
                   <span className="text-gray-500 text-base lg:text-lg">
                     (em breve!)
                   </span>
@@ -139,6 +140,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
