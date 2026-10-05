@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import laje from './icon.png';
 import BotãoGamer from '@/components/ui/BotãoGamer';
 
@@ -121,6 +122,20 @@ export default function Home() {
                   <span className="text-gray-500 text-base lg:text-lg">
                     (em breve!)
                   </span>
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-green-500 font-black shrink-0">
+                  {'>'}
+                </span>
+                <span>
+                  <Link
+                    href="/membros"
+                    className="hover:text-green-600 transition-colors underline decoration-green-500/40 hover:decoration-green-500"
+                  >
+                    Portal do Membro
+                  </Link>
+                  : procedimentos, regras, formulários e canais internos
                 </span>
               </li>
             </ul>

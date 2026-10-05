@@ -93,11 +93,19 @@ body {
     background-attachment: scroll;
   }
 
-  @media (min-aspect-ratio: 16/9), (min-width: 1024px) {
+    @media (min-aspect-ratio: 16/9), (min-width: 1024px) {
     .bg-laje,
     .bg-laje-2 {
       background-size: cover;
     }
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
 
