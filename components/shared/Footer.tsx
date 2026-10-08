@@ -25,6 +25,26 @@ function InstagramIcon({ className = 'w-5 h-5' }: { className?: string }) {
   );
 }
 
+function LinkedinIcon({ className = 'w-5 h-5' }: { className?: string }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+      <rect width="4" height="12" x="2" y="9" />
+      <circle cx="4" cy="4" r="2" />
+    </svg>
+  );
+}
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -33,6 +53,7 @@ export default function Footer() {
     { label: 'Notícias', href: '/noticias' },
     { label: 'Artigos', href: '/artigos' },
     { label: 'Repositório', href: '/repositorio' },
+    { label: 'Área do Membro', href: '/membros' },
     { label: 'FAQ', href: '/faq' },
     { label: 'Jogos', href: '/repositorio/jogos' },
     { label: 'Coleções', href: '/repositorio/colecoes' }
@@ -70,21 +91,35 @@ export default function Footer() {
             </p>
 
             {/* Redes Sociais */}
-            <div className="mt-2 flex flex-col gap-2">
+            <div className="mt-2 flex flex-col gap-2.5">
               <span className="text-xs font-mono font-bold tracking-widest text-green-400 uppercase">
                 Redes Sociais
               </span>
-              <a
-                href="https://www.instagram.com/laje.ufpe/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl bg-gray-900 border border-green-500/30 text-green-300 hover:text-green-200 hover:border-green-400 hover:bg-gray-850 hover:shadow-[0_0_15px_rgba(34,197,94,0.2)] transition-all group w-fit"
-                aria-label="Instagram da LAJE (@laje.ufpe)"
-              >
-                <InstagramIcon className="w-5 h-5 text-pink-400 group-hover:scale-110 transition-transform shrink-0" />
-                <span className="font-mono text-sm font-bold">@laje.ufpe</span>
-                <ExternalLink className="w-3.5 h-3.5 text-gray-500 group-hover:text-green-400 transition-colors ml-1" />
-              </a>
+              <div className="flex flex-col sm:flex-row lg:flex-col gap-2">
+                <a
+                  href="https://www.instagram.com/laje.ufpe/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl bg-gray-900 border border-green-500/30 text-green-300 hover:text-green-200 hover:border-green-400 hover:bg-gray-850 hover:shadow-[0_0_15px_rgba(34,197,94,0.2)] transition-all group w-fit"
+                  aria-label="Instagram da LAJE (@laje.ufpe)"
+                >
+                  <InstagramIcon className="w-5 h-5 text-pink-400 group-hover:scale-110 transition-transform shrink-0" />
+                  <span className="font-mono text-sm font-bold">@laje.ufpe</span>
+                  <ExternalLink className="w-3.5 h-3.5 text-gray-500 group-hover:text-green-400 transition-colors ml-1" />
+                </a>
+
+                <a
+                  href="https://www.linkedin.com/company/laje-ufpe/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl bg-gray-900 border border-green-500/30 text-green-300 hover:text-green-200 hover:border-green-400 hover:bg-gray-850 hover:shadow-[0_0_15px_rgba(34,197,94,0.2)] transition-all group w-fit"
+                  aria-label="LinkedIn da LAJE (laje-ufpe)"
+                >
+                  <LinkedinIcon className="w-5 h-5 text-sky-400 group-hover:scale-110 transition-transform shrink-0" />
+                  <span className="font-mono text-sm font-bold">in/laje-ufpe</span>
+                  <ExternalLink className="w-3.5 h-3.5 text-gray-500 group-hover:text-green-400 transition-colors ml-1" />
+                </a>
+              </div>
             </div>
           </div>
 
