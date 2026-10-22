@@ -74,10 +74,16 @@ export default function Header({ selected }: HeaderProps = {}) {
     `;
   };
 
+  const isHome = pathname === '/';
+
   return (
     <>
       <nav
-        className="fixed top-0 left-0 z-40 w-full bg-linear-to-b from-green-300/90 from-50% via-green-300/70 via-80% to-transparent px-3 py-0 text-green-300 md:relative md:p-5"
+        className={`fixed top-0 left-0 z-40 w-full px-3 py-0 text-green-300 md:relative md:p-5 ${
+          isHome
+            ? 'bg-green-300/90'
+            : 'bg-linear-to-b from-green-300/90 from-50% via-green-300/70 via-80% to-transparent'
+        }`}
         aria-label="Navegação principal"
       >
         {/* ========================================================= */}
