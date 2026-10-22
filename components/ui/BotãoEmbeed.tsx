@@ -15,18 +15,18 @@ export default function BotãoEmbeed({
   href,
   label,
   image,
-  className = "self-baseline",
+  className = "w-full",
 }: BotãoEmbeedProps) {
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`group flex ${className} items-center justify-between gap-3 border border-green-300/40 rounded-full py-1.5 pl-3 pr-4 text-xs text-green-300 hover:bg-green-900/30 hover:border-green-300/70 transition-all duration-200`}
+      className={`group flex ${className} items-center justify-between gap-3 border border-green-300/40 rounded-full py-1.5 pl-3 pr-4 text-xs text-green-300 hover:bg-green-900/30 hover:border-green-300/70 transition-all duration-200 whitespace-nowrap`}
     >
       <span className="flex items-center gap-1.5">
         {image && (
-          <span className="flex size-4 items-center justify-center">
+          <span className="flex size-4 shrink-0 items-center justify-center">
             {image}
           </span>
         )}
