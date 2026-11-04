@@ -10,15 +10,15 @@ export default function Home() {
       <div className="w-full bg-linear-to-b from-green-300/90 from-30% via-green-300/70 via-40% to-transparent">
         <div className="min-h-screen w-full text-center flex flex-col justify-center items-center gap-6 lg:gap-12 px-4 pt-24 md:pt-32 pb-12 bg-laje bg-no-repeat">
           <div className="flex flex-col items-center text-center text-4xl font-sans">
-            <h3 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-medium mb-2">
+            <h3 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-medium mb-2 [text-shadow:_0_0_100px_rgba(255,255,255,0.85),_0_0_24px_rgba(220,252,231,0.6),_0_1px_3px_rgba(15,23,42,0.4)]">
               Bem-Vindo à
             </h3>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight max-w-4xl">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black leading-tight max-w-4xl [text-shadow:_0_0_100px_rgba(255,255,255,0.9),_0_0_32px_rgba(220,252,231,0.6),_0_2px_4px_rgba(15,23,42,0.35)]">
               Liga Acadêmica
               <br />
               de Jogos Eletrônicos
             </h1>
-            <div className="w-48 sm:w-80 h-px bg-gray-900/40 mt-6 md:mt-8"></div>
+            <div className="w-48 sm:w-80 h-px bg-gray-900/40 mt-6 md:mt-8 shadow-[0_0_8px_rgba(255,255,255,0.8)]"></div>
           </div>
 
           <BotãoGamer href="#sobre" texto="PRESS START" />
@@ -30,7 +30,7 @@ export default function Home() {
         id="sobre"
         className="flex p-6 md:p-10 min-h-screen justify-center items-center"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-6 lg:gap-12 max-w-6xl w-full px-4 sm:px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-6 lg:gap-12 max-w-6xl w-full px-4 sm:px-text 6">
           <div className="flex flex-col gap-6 md:gap-8 text-left">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight">
               Quem somos?
