@@ -26,6 +26,10 @@ export interface FormItem {
   description: string;
   url: string;
   badge?: string;
+  purpose?: string;
+  sla?: string;
+  targetAudience?: string;
+  tips?: string;
 }
 
 export interface CommunicationChannel {
@@ -250,7 +254,11 @@ export const FORMS_DATA: FormItem[] = [
     description:
       'Cadastre seu jogo autoral desenvolvido na LAJE para inclusão no repositório oficial, catálogo do site e canais de divulgação.',
     url: 'https://forms.gle/EuZBPB1k5td81s3e6',
-    badge: 'Principal'
+    badge: 'Principal',
+    purpose: 'Inclusão de projeto no repositório oficial e catálogo da LAJE',
+    sla: '3 a 5 dias úteis',
+    targetAudience: 'Membros e equipes que concluíram ou lançaram build jogável',
+    tips: 'Tenha em mãos o link da build (itch.io/Steam), screenshots e créditos do squad.'
   },
   {
     id: 'form-horas-extensao',
@@ -259,7 +267,11 @@ export const FORMS_DATA: FormItem[] = [
     description:
       'Requerimento de declaração de horas de extensão curricular (UFPE/CIn) com base nas entregas e participação no semestre.',
     url: 'https://forms.gle/EuZBPB1k5td81s3e6',
-    badge: 'Extensão'
+    badge: 'Extensão',
+    purpose: 'Emissão de certificado/declaração de horas complementares',
+    sla: '7 dias úteis',
+    targetAudience: 'Estudantes da UFPE ativos em squads ou projetos da LAJE',
+    tips: 'Indique o semestre de atuação e as entregas/sprints em que colaborou.'
   },
   {
     id: 'form-equipamentos-salas',
@@ -268,7 +280,11 @@ export const FORMS_DATA: FormItem[] = [
     description:
       'Solicitação para reserva de salas de reunião no CIn, mesas digitalizadoras e equipamentos para playtest presencial.',
     url: 'https://forms.gle/EuZBPB1k5td81s3e6',
-    badge: 'CIn / UFPE'
+    badge: 'CIn / UFPE',
+    purpose: 'Agendamento de espaço físico e uso de hardware do laboratório',
+    sla: '48 horas',
+    targetAudience: 'Equipes que necessitam de reuniões presenciais ou sessões de playtest',
+    tips: 'Solicite com antecedência mínima de 2 dias úteis da data desejada.'
   },
   {
     id: 'form-ouvidoria-feedback',
@@ -277,7 +293,11 @@ export const FORMS_DATA: FormItem[] = [
     description:
       'Canal seguro para envio de dúvidas, sugestões para a gestão da LAJE ou relatos confidenciais sobre a convivência interna.',
     url: 'https://forms.gle/EuZBPB1k5td81s3e6',
-    badge: 'Sugestões'
+    badge: 'Sugestões',
+    purpose: 'Canal anônimo ou identificado de comunicação com a diretoria',
+    sla: '3 a 7 dias úteis',
+    targetAudience: 'Qualquer membro ou participante da comunidade LAJE',
+    tips: 'Relatos de convivência são tratados sob estrita confidencialidade.'
   }
 ];
 

@@ -27,21 +27,21 @@ export default function Footer() {
               Conectando arte e tecnologia para o desenvolvimento de jogos no{" "}
               <b className="font-semibold">Centro de Informática da UFPE.</b>
             </p>
-            <p className="font-light">desde 2025</p>
+            <p className="font-light">Desde 2025</p>
           </div>
         </div>
 
         <div className="h-px w-full bg-lime-300/20 xl:h-auto xl:w-px xl:self-stretch"></div>
 
         {/* Seções Centrais e Direita */}
-        <div className="flex-3 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3 xl:gap-8">
+        <div className="flex-[3] grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3 xl:gap-8">
           {/* vinculos */}
           <div className="flex flex-col gap-4">
             <p className="text-sm font-light leading-relaxed">
               Iniciativa vinculada ao Centro de Informática da Universidade
               Federal de Pernambuco.
             </p>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-3 w-fit">
               <BotãoEmbeed
                 href="https://www.ufpe.br/"
                 label="universidade federal de pernambuco"
@@ -58,11 +58,10 @@ export default function Footer() {
             <p className="text-sm font-light">
               &gt; conheça nossas <b className="font-semibold">redes sociais</b>
             </p>
-            <div className="grid grid-cols-2 gap-3">
+            <div className="flex flex-col gap-3 w-fit">
               <BotãoEmbeed
                 href="https://www.instagram.com/laje.ufpe/"
                 label="instagram"
-                className="w-full"
                 image={
                   <svg
                     role="img"
@@ -80,7 +79,6 @@ export default function Footer() {
               <BotãoEmbeed
                 href="https://lajeufpe.itch.io/"
                 label="itch.io"
-                className="w-full"
                 image={
                   <svg
                     role="img"
@@ -97,7 +95,6 @@ export default function Footer() {
               <BotãoEmbeed
                 href="https://www.linkedin.com/company/laje-ufpe/"
                 label="linkedin"
-                className="w-full"
                 image={
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -114,7 +111,6 @@ export default function Footer() {
               <BotãoEmbeed
                 href="https://github.com/LAJE-CIn"
                 label="github"
-                className="w-full"
                 image={
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -136,7 +132,7 @@ export default function Footer() {
             <p className="text-sm font-light">
               &gt; entre <b className="font-bold">em contato</b>
             </p>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-3 w-fit">
               <BotãoEmbeed href="#" label="faq" />
               <BotãoEmbeed
                 href="mailto:laje.rh.cin.ufpe@gmail.com"

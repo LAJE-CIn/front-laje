@@ -27,6 +27,15 @@ export default function MemberRequestModal({
   const [selectedFormId, setSelectedFormId] = useState<string>(
     initialFormId || FORMS_DATA[0].id
   );
+  const [prevInitialFormId, setPrevInitialFormId] = useState(initialFormId);
+
+  // Sincronizar form selecionado quando initialFormId mudar durante o render
+  if (initialFormId !== prevInitialFormId) {
+    setPrevInitialFormId(initialFormId);
+    if (initialFormId) {
+      setSelectedFormId(initialFormId);
+    }
+  }
 
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
@@ -41,13 +50,6 @@ export default function MemberRequestModal({
   const [protocolCode, setProtocolCode] = useState('');
   const [copiedProtocol, setCopiedProtocol] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-
-  // Sincronizar form selecionado quando abrir
-  useEffect(() => {
-    if (initialFormId) {
-      setSelectedFormId(initialFormId);
-    }
-  }, [initialFormId, isOpen]);
 
   // Bloquear rolagem do body quando o modal estiver aberto e escutar tecla ESC
   useEffect(() => {
@@ -188,18 +190,26 @@ export default function MemberRequestModal({
               {/* Card Informativo do Requerimento Ativo */}
               <div className="p-3.5 rounded-xl bg-gray-900/60 border border-green-500/20 text-xs font-sans space-y-2">
                 <div className="flex flex-wrap items-center justify-between gap-2">
-                  <span className="font-semibold text-white">{activeForm.purpose}</span>
-                  <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-green-500/20 text-green-300 font-mono text-[11px] border border-green-500/30">
-                    <Clock className="w-3.5 h-3.5 text-green-400" />
-                    <span>SLA: {activeForm.sla}</span>
-                  </div>
+                  <span className="font-semibold text-white">
+                    {activeForm.purpose || activeForm.description}
+                  </span>
+                  {activeForm.sla && (
+                    <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-green-500/20 text-green-300 font-mono text-[11px] border border-green-500/30">
+                      <Clock className="w-3.5 h-3.5 text-green-400" />
+                      <span>SLA: {activeForm.sla}</span>
+                    </div>
+                  )}
                 </div>
-                <p className="text-gray-400">
-                  <strong className="text-green-300">Público-alvo:</strong> {activeForm.targetAudience}
-                </p>
-                <p className="text-gray-400">
-                  <strong className="text-green-300">Dica:</strong> {activeForm.tips}
-                </p>
+                {activeForm.targetAudience && (
+                  <p className="text-gray-400">
+                    <strong className="text-green-300">Público-alvo:</strong> {activeForm.targetAudience}
+                  </p>
+                )}
+                {activeForm.tips && (
+                  <p className="text-gray-400">
+                    <strong className="text-green-300">Dica:</strong> {activeForm.tips}
+                  </p>
+                )}
               </div>
 
               {/* Mensagem de Erro se houver */}
