@@ -8,7 +8,7 @@ export default function Home() {
     <div>
       {/* Landing page */}
       <div className="w-full bg-linear-to-b from-green-300/90 from-30% via-green-300/70 via-40% to-transparent">
-        <div className="min-h-screen w-full text-center flex flex-col justify-center items-center gap-6 lg:gap-12 px-4 pt-24 md:pt-32 pb-12 bg-laje bg-no-repeat">
+        <div className="min-h-screen min-h-[100dvh] w-full text-center flex flex-col justify-center items-center gap-6 lg:gap-12 px-4 pt-24 md:pt-32 pb-12 bg-laje bg-no-repeat">
           <div className="flex flex-col items-center text-center text-4xl font-sans">
             <h3 className="text-2xl sm:text-2xl md:text-3xl lg:text-4xl font-medium mb-2 [text-shadow:_0_0_100px_rgba(255,255,255,0.85),_0_0_24px_rgba(220,252,231,0.6),_0_1px_3px_rgba(15,23,42,0.4)]">
               Bem-Vindo à
