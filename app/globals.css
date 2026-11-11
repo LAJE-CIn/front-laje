@@ -89,15 +89,24 @@ body {
   .bg-laje-2 {
     background-repeat: no-repeat;
     background-position: center bottom;
-    background-size: contain;
+    background-size: 100% auto;
     background-attachment: scroll;
   }
 
-  @media (min-aspect-ratio: 16/9), (min-width: 1024px) {
+    @media (min-aspect-ratio: 16/9), (min-width: 1024px) {
     .bg-laje,
     .bg-laje-2 {
-      background-size: cover;
+      background-size: 100% auto;
+      background-position: center bottom;
     }
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
 

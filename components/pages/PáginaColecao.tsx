@@ -5,6 +5,7 @@
 import type { Evento } from '#site/content';
 import { useState } from 'react';
 import { MDXContent } from '../shared/mdx-content';
+import PageContainer from '../shared/PageContainer';
 import BotãoVoltar from '../ui/BotãoVoltar';
 import Image from 'next/image';
 import Select from 'react-select';
@@ -74,7 +75,7 @@ export default function PáginaColecao({ colecao }: PáginaColecaoProps) {
   });
 
   return (
-    <div className="flex flex-col gap-5 m-4 md:px-0 pt-28 md:pt-10">
+    <PageContainer className="flex flex-col gap-5">
       {/* Breadcrumb e botão de voltar */}
 
       <div className="flex justify-between items-center">
@@ -158,6 +159,6 @@ export default function PáginaColecao({ colecao }: PáginaColecaoProps) {
           ))}
         </div>
       </div>
-    </div>
+    </PageContainer>
   );
 }

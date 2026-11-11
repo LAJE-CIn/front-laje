@@ -3,6 +3,7 @@
 // Importações
 import { Conteudo } from '@/lib/content';
 import ContentContainer from '../shared/ContentContainer';
+import PageContainer from '../shared/PageContainer';
 import FilterBox from '../shared/FilterBox';
 import BotãoVoltar from '../ui/BotãoVoltar';
 import { useState } from 'react';
@@ -117,7 +118,7 @@ export default function PaginaFeed({
   );
 
   return (
-    <div className="flex flex-col gap-5 m-4 md:px-0 pt-28 md:pt-10">
+    <PageContainer className="flex flex-col gap-5">
       {/* Barra de filtro e botão de voltar */}
 
       <div className="flex justify-between items-center">
@@ -164,6 +165,6 @@ export default function PaginaFeed({
           </p>
         )}
       </div>
-    </div>
+    </PageContainer>
   );
 }

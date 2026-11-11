@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import { Pixelify_Sans, Geist, Geist_Mono } from 'next/font/google';
+import Header from '@/components/shared/Header';
+import Footer from '@/components/shared/Footer';
 import './globals.css';
 
 const geistSans = Geist({
@@ -30,10 +32,13 @@ export default function RootLayout({
   return (
     <html
       lang="pt"
-
       className={`${geistSans.variable} ${geistMono.variable} ${pixelify.variable} h-full antialiased scroll-smooth`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <Header />
+        <main className="flex-1 flex flex-col">{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }

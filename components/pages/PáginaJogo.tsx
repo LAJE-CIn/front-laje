@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import BotãoVoltar from '../ui/BotãoVoltar';
 import { MDXContent } from '../shared/mdx-content';
+import PageContainer from '../shared/PageContainer';
 import type { Jogo } from '#site/content';
 
 // Layout de página de detalhe de um jogo (capa + corpo)
@@ -28,7 +29,7 @@ const mdxComponents = {
 
 export default function PaginaJogo({ jogo }: PaginaJogoProps) {
   return (
-    <div className="flex flex-col gap-5 m-4 md:px-0 pt-28 md:pt-10">
+    <PageContainer className="flex flex-col gap-5">
       {/* Breadcrumb e botão de voltar */}
 
       <div className="flex justify-between items-center">
@@ -102,6 +103,6 @@ export default function PaginaJogo({ jogo }: PaginaJogoProps) {
           )}
         </div>
       </div>
-    </div>
+    </PageContainer>
   );
 }

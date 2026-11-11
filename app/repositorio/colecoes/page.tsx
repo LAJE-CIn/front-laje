@@ -3,7 +3,6 @@
 import { getEventosOrdenados } from '@/lib/content';
 // Importações
 import PaginaFeed from '@/components/pages/PáginaFeed';
-import Header from '@/components/shared/Header';
 // Página de eventos
 
 export default async function EventosPage() {
@@ -15,15 +14,12 @@ export default async function EventosPage() {
   const tiposBusca = ['Nome'];
 
   return (
-    <>
-      <Header selected="repositorio" />
-      <PaginaFeed
-        nome="Coleções"
-        tipos={tiposBusca}
-        posts={content}
-        categorias={categoriasSorted}
-        basePath="/repositorio/colecoes"
-      />
-    </>
+    <PaginaFeed
+      nome="Coleções"
+      tipos={tiposBusca}
+      posts={content}
+      categorias={categoriasSorted}
+      basePath="/repositorio/colecoes"
+    />
   );
 }
