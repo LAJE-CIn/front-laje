@@ -23,6 +23,7 @@ interface PaginaFeedProps {
   tipos: string[];
   categorias: string[];
   basePath: string;
+  categoriaTopo?: string;
 }
 
 export default function PaginaFeed({
@@ -30,7 +31,8 @@ export default function PaginaFeed({
   posts,
   tipos,
   categorias,
-  basePath
+  basePath,
+  categoriaTopo
 }: PaginaFeedProps) {
   // Opções de filtro
   const [pesquisa, setPesquisa] = useState<string>('');
@@ -151,6 +153,16 @@ export default function PaginaFeed({
       {/* Container de jogos/eventos separados por categoria */}
 
       <div className="flex flex-col gap-6">
+        {categoriaTopo &&
+          postsFiltrados.length > 0 &&
+          (selecionados.length === 0 || selecionados.includes(categoriaTopo)) && (
+            <ContentContainer
+              key={categoriaTopo}
+              titulo={categoriaTopo}
+              conteudo={postsFiltrados}
+              basePath={basePath}
+            />
+          )}
         {categoriasParaRenderizar.map((nomeCategoria) => (
           <ContentContainer
             key={nomeCategoria}
