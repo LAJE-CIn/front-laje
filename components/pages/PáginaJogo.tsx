@@ -1,6 +1,7 @@
 // Importações
 
 import Image from 'next/image';
+import PlaceholderTBD from '../ui/PlaceholderTBD';
 import BotãoVoltar from '../ui/BotãoVoltar';
 import { MDXContent } from '../shared/mdx-content';
 import PageContainer from '../shared/PageContainer';
@@ -48,14 +49,22 @@ export default function PaginaJogo({ jogo }: PaginaJogoProps) {
       <div className="flex flex-col md:flex-row gap-6 border-2 border-black bg-white/50 rounded-xs p-6 shadow-2xl">
         {/* Capa e informações */}
         <div className="flex flex-col gap-6 ">
-          <Image
-            src={jogo.imagem}
-            alt={`Capa do jogo ${jogo.nome}`}
-            loading="eager"
-            width={320}
-            height={208}
-            className="w-full md:w-80 h-52 object-cover border-2 border-black rounded-xs shrink-0"
-          />
+          {jogo.imagem &&
+          jogo.imagem.trim() !== '' &&
+          !jogo.imagem.includes('/assets/mock/') ? (
+            <Image
+              src={jogo.imagem}
+              alt={`Capa do jogo ${jogo.nome}`}
+              loading="eager"
+              width={320}
+              height={208}
+              className="w-full md:w-80 h-52 object-cover border-2 border-black rounded-xs shrink-0"
+            />
+          ) : (
+            <div className="w-full md:w-80 h-52 border-2 border-black rounded-xs shrink-0 overflow-hidden">
+              <PlaceholderTBD seed={jogo.slug || jogo.nome} />
+            </div>
+          )}
 
           <div className="flex flex-col gap-2 text-black font-medium text-lg md:text-xl">
             <h2 className="text-xl md:text-3xl font-bold mb-1">
