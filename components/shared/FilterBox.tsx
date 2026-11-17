@@ -95,6 +95,7 @@ export default function FilterBox({
           <Pencil className="text-black" size={24} />
 
           <Select
+            instanceId="filterbox-tipo-select"
             value={tipoOption}
             options={opçõesTipos}
             onChange={onChangeTipo}
@@ -112,6 +113,7 @@ export default function FilterBox({
           )}
 
           <Select
+            instanceId="filterbox-ordem-select"
             value={ordemOption}
             options={opçõesOrdem}
             onChange={onChangeOrdem}

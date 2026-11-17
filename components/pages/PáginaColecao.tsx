@@ -139,6 +139,7 @@ export default function PáginaColecao({ colecao }: PáginaColecaoProps) {
             Ordenar por:
           </h2>
           <Select
+            instanceId="colecao-sort-select"
             options={opções}
             value={currentOpção}
             onChange={changeopção}

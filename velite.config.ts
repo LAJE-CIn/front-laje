@@ -47,8 +47,10 @@ export default defineConfig({
         body: s.mdx(),
         engine: s.string().trim().toLowerCase().optional(),
         authors: s.array(s.string().trim()).default([]),
-        link: s.string().trim(),
-        repo: s.enum(['git', 'itch'])
+        link: s.string().trim().optional(),
+        repo: s.enum(['git', 'itch']).optional(),
+        github: s.string().trim().optional(),
+        itch: s.string().trim().optional()
       })
     }
   },
