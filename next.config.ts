@@ -8,6 +8,7 @@ if (!process.env.VELITE_STARTED && (isDev || isBuild)) {
 }
 
 const nextConfig: NextConfig = {
+  output: 'standalone',
   turbopack: {
     root: __dirname
   }

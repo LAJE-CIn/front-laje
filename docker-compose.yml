@@ -1,0 +1,28 @@
+services:
+  web:
+    build: .
+    container_name: front-laje
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3067:3067"
+    environment:
+      NODE_ENV: production
+      PORT: "3067"
+      HOSTNAME: 0.0.0.0
+    init: true
+    read_only: true
+    tmpfs:
+      - /tmp
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    deploy:
+      resources:
+        limits:
+          memory: 768M
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
