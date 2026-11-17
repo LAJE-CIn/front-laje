@@ -15,6 +15,7 @@ export default async function JogosPage() {
       tipos={tiposBusca}
       categorias={categorias}
       basePath="/repositorio/jogos"
+      categoriaTopo="Indie"
     />
   );
 }

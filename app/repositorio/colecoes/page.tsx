@@ -1,16 +1,13 @@
 'use server';
 
 import { getEventosOrdenados } from '@/lib/content';
-// Importações
 import PaginaFeed from '@/components/pages/PáginaFeed';
-// Página de eventos
 
-export default async function EventosPage() {
+export default async function ColecoesPage() {
   const content = await getEventosOrdenados();
-  const categorias = Array.from(new Set(content.map((evento) => evento.tipo)));
-
-  const categoriasSorted = categorias.sort();
-
+  const categoriasSorted = Array.from(
+    new Set(content.map((colecao) => colecao.tipo))
+  ).sort();
   const tiposBusca = ['Nome'];
 
   return (
